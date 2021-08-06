@@ -1,4 +1,4 @@
-import "./Options.css";
+import './Options.css';
 
 export const Options = () => {
   return (

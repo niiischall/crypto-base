@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "8b9de696c28cb054c77c";
+/******/ 	var hotCurrentHash = "a559c3c2d6916c6f759e";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -1516,11 +1516,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "printAllPageLinks", function() { return printAllPageLinks; });
 printAllPageLinks();
 function printAllPageLinks() {
-  const allLinks = Array.from(document.querySelectorAll("a")).map(link => link.href);
-  console.log("-".repeat(30));
+  const allLinks = Array.from(document.querySelectorAll('a')).map(link => link.href);
+  console.log('-'.repeat(30));
   console.log(`These are all ${allLinks.length} links on the current page that have been printed by the Sample Create React Extension`);
   console.log(allLinks);
-  console.log("-".repeat(30));
+  console.log('-'.repeat(30));
 }
 
 /***/ }),
@@ -1532,8 +1532,8 @@ function printAllPageLinks() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/geekyants/Nischal-Nikit/crypto-base/node_modules/webpack/hot/dev-server.js */"./node_modules/webpack/hot/dev-server.js");
-module.exports = __webpack_require__(/*! /Users/geekyants/Nischal-Nikit/crypto-base/src/contentScript/index.js */"./src/contentScript/index.js");
+__webpack_require__(/*! /Users/geekyants/Desktop/Hackathon-21/crypto-base/node_modules/webpack/hot/dev-server.js */"./node_modules/webpack/hot/dev-server.js");
+module.exports = __webpack_require__(/*! /Users/geekyants/Desktop/Hackathon-21/crypto-base/src/contentScript/index.js */"./src/contentScript/index.js");
 
 
 /***/ })

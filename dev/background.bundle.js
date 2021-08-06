@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "8b9de696c28cb054c77c";
+/******/ 	var hotCurrentHash = "a559c3c2d6916c6f759e";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -11718,8 +11718,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "messageInBackground", function() { return messageInBackground; });
 messageInBackground();
 function messageInBackground() {
-  console.log("I can run your javascript like any other code in your project");
-  console.log("just do not forget, I cannot render anything !");
+  console.log('I can run your javascript like any other code in your project');
+  console.log('just do not forget, I cannot render anything !');
 }
 
 /***/ }),
@@ -11731,9 +11731,9 @@ function messageInBackground() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/geekyants/Nischal-Nikit/crypto-base/node_modules/webpack/hot/dev-server.js */"./node_modules/webpack/hot/dev-server.js");
-__webpack_require__(/*! /Users/geekyants/Nischal-Nikit/crypto-base/node_modules/webpack-dev-server/client/index.js?http://localhost:4000 */"./node_modules/webpack-dev-server/client/index.js?http://localhost:4000");
-module.exports = __webpack_require__(/*! /Users/geekyants/Nischal-Nikit/crypto-base/src/background/index.ts */"./src/background/index.ts");
+__webpack_require__(/*! /Users/geekyants/Desktop/Hackathon-21/crypto-base/node_modules/webpack/hot/dev-server.js */"./node_modules/webpack/hot/dev-server.js");
+__webpack_require__(/*! /Users/geekyants/Desktop/Hackathon-21/crypto-base/node_modules/webpack-dev-server/client/index.js?http://localhost:4000 */"./node_modules/webpack-dev-server/client/index.js?http://localhost:4000");
+module.exports = __webpack_require__(/*! /Users/geekyants/Desktop/Hackathon-21/crypto-base/src/background/index.ts */"./src/background/index.ts");
 
 
 /***/ })

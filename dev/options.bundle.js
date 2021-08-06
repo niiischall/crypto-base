@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "8b9de696c28cb054c77c";
+/******/ 	var hotCurrentHash = "a559c3c2d6916c6f759e";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -42950,7 +42950,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Options_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_Options_css__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-dev-runtime */ "./node_modules/react/jsx-dev-runtime.js");
 /* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_1__);
-var _jsxFileName = "/Users/geekyants/Nischal-Nikit/crypto-base/src/options/Options.js";
+var _jsxFileName = "/Users/geekyants/Desktop/Hackathon-21/crypto-base/src/options/Options.js";
 
 
 const Options = () => {
@@ -42989,7 +42989,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Options__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Options */ "./src/options/Options.js");
 /* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-dev-runtime */ "./node_modules/react/jsx-dev-runtime.js");
 /* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_3__);
-var _jsxFileName = "/Users/geekyants/Nischal-Nikit/crypto-base/src/options/index.js";
+var _jsxFileName = "/Users/geekyants/Desktop/Hackathon-21/crypto-base/src/options/index.js";
 
 
 
@@ -43004,7 +43004,7 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/Object(rea
   fileName: _jsxFileName,
   lineNumber: 6,
   columnNumber: 3
-}, undefined), document.getElementById("options"));
+}, undefined), document.getElementById('options'));
 
 /***/ }),
 
@@ -43015,9 +43015,9 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/Object(rea
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/geekyants/Nischal-Nikit/crypto-base/node_modules/webpack/hot/dev-server.js */"./node_modules/webpack/hot/dev-server.js");
-__webpack_require__(/*! /Users/geekyants/Nischal-Nikit/crypto-base/node_modules/webpack-dev-server/client/index.js?http://localhost:4000 */"./node_modules/webpack-dev-server/client/index.js?http://localhost:4000");
-module.exports = __webpack_require__(/*! /Users/geekyants/Nischal-Nikit/crypto-base/src/options/index.js */"./src/options/index.js");
+__webpack_require__(/*! /Users/geekyants/Desktop/Hackathon-21/crypto-base/node_modules/webpack/hot/dev-server.js */"./node_modules/webpack/hot/dev-server.js");
+__webpack_require__(/*! /Users/geekyants/Desktop/Hackathon-21/crypto-base/node_modules/webpack-dev-server/client/index.js?http://localhost:4000 */"./node_modules/webpack-dev-server/client/index.js?http://localhost:4000");
+module.exports = __webpack_require__(/*! /Users/geekyants/Desktop/Hackathon-21/crypto-base/src/options/index.js */"./src/options/index.js");
 
 
 /***/ })
