@@ -5,7 +5,7 @@
   "name": "CryptoBase | Everything crypto",
   "description": "Alerts and comparisons for popular cryptocurrencies",
   "browser_action": {
-    "default_title": "CRE",
+    "default_title": "CryptoBase",
     "default_popup": "popup.html"
   },
   "background": {

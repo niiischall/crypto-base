@@ -5,7 +5,7 @@ export interface Props {}
 export const App: React.FC<Props> = () => {
   return (
     <div>
-      <span>Crypto Allies!</span>
+      <span>&nbsp;</span>
     </div>
   );
 };
