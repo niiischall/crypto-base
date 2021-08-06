@@ -1,0 +1,20 @@
+{
+  "files": {
+    "app.js": "app.bundle.js",
+    "app.js.map": "app.bundle.js.map",
+    "background.js": "background.bundle.js",
+    "background.js.map": "background.bundle.js.map",
+    "contentScript.js": "contentScript.bundle.js",
+    "contentScript.js.map": "contentScript.bundle.js.map",
+    "options.js": "options.bundle.js",
+    "options.js.map": "options.bundle.js.map",
+    "options.html": "options.html",
+    "popup.html": "popup.html"
+  },
+  "entrypoints": [
+    "app.bundle.js",
+    "options.bundle.js",
+    "background.bundle.js",
+    "contentScript.bundle.js"
+  ]
+}
