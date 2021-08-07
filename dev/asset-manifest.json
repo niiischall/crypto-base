@@ -7,11 +7,12 @@
     "contentScript.js": "contentScript.bundle.js",
     "contentScript.js.map": "contentScript.bundle.js.map",
     "options.js": "options.bundle.js",
-    "options.js.map": "options.bundle.js.map"
+    "options.js.map": "options.bundle.js.map",
+    "options.html": "options.html",
+    "popup.html": "popup.html"
   },
   "entrypoints": [
     "app.bundle.js",
-    "app.7eaca08403ff0de1cfdb.hot-update.js",
     "options.bundle.js",
     "background.bundle.js",
     "contentScript.bundle.js"
