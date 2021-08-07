@@ -1,11 +1,11 @@
 {
   "manifest_version": 2,
   "version": "0.0.1",
-  "short_name": "CryptoAlly",
-  "name": "CryptoAlly - Crypocurrency Chrome Extension",
-  "description": "A Chrome Extension for everything about cryptocurrency",
+  "short_name": "CryptoBase",
+  "name": "CryptoBase | Everything crypto",
+  "description": "Alerts and comparisons for popular cryptocurrencies",
   "browser_action": {
-    "default_title": "CRE",
+    "default_title": "CryptoBase",
     "default_popup": "popup.html"
   },
   "background": {

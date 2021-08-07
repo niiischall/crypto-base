@@ -1,5 +1,6 @@
 {
   "files": {
+    "app.css": "static/css/app.e1209f70.css",
     "app.js": "app.bundle.js",
     "app.js.map": "app.bundle.js.map",
     "background.js": "background.bundle.js",
@@ -9,13 +10,19 @@
     "options.css": "static/css/options.a209935d.css",
     "options.js": "options.bundle.js",
     "options.js.map": "options.bundle.js.map",
+    "static/css/4.80c72249.chunk.css": "static/css/4.80c72249.chunk.css",
+    "4.bundle.js": "4.bundle.js",
+    "4.bundle.js.map": "4.bundle.js.map",
     "app.bundle.js.LICENSE.txt": "app.bundle.js.LICENSE.txt",
     "options.bundle.js.LICENSE.txt": "options.bundle.js.LICENSE.txt",
     "options.html": "options.html",
     "popup.html": "popup.html",
+    "static/css/4.80c72249.chunk.css.map": "static/css/4.80c72249.chunk.css.map",
+    "static/css/app.e1209f70.css.map": "static/css/app.e1209f70.css.map",
     "static/css/options.a209935d.css.map": "static/css/options.a209935d.css.map"
   },
   "entrypoints": [
+    "static/css/app.e1209f70.css",
     "app.bundle.js",
     "static/css/options.a209935d.css",
     "options.bundle.js",

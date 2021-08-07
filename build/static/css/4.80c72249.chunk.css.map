@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/pages/Layout/style.css"],"names":[],"mappings":"AAAA,kBACE,WAAY,CACZ,YACF","file":"4.80c72249.chunk.css","sourcesContent":[".layout-container {\n  width: 360px;\n  height: 600px;\n}"]}

@@ -16,5 +16,9 @@ body {
 }
 
 :root {
-  --primary-color: #BEFFC7;
+  --primary-color: #beffc7;
+  --color-white: #f8f8f8;
+  --color-grey: #979797;
+  --color-grey--light: #eeeeee;
+  --color-black: #323232;
 }
