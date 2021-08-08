@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Options from './Options';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Options />
+    <span>&nbsp;</span>
   </React.StrictMode>,
   document.getElementById('options'),
 );
