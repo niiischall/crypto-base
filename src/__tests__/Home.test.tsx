@@ -1,14 +1,14 @@
 import ReactDOM from 'react-dom';
 
-import { Options } from '../options/Options';
+import { Home } from '../pages/Home';
 
 const props = {};
 
-describe('Options Page', () => {
+describe('Home Component', () => {
   const div = document.createElement('div');
 
   it('should match snapshot', () => {
-    const component = ReactDOM.render(<Options {...props} />, div);
+    const component = ReactDOM.render(<Home {...props} />, div);
     expect(component).toMatchSnapshot();
   });
 });

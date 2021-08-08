@@ -1,14 +1,14 @@
 import ReactDOM from 'react-dom';
 
-import { Options } from '../options/Options';
+import { Header } from '../components/Header';
 
 const props = {};
 
-describe('Options Page', () => {
+describe('Header Component', () => {
   const div = document.createElement('div');
 
   it('should match snapshot', () => {
-    const component = ReactDOM.render(<Options {...props} />, div);
+    const component = ReactDOM.render(<Header {...props} />, div);
     expect(component).toMatchSnapshot();
   });
 });
