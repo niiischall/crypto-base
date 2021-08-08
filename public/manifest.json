@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "short_name": "CryptoBase",
   "name": "CryptoBase",
-  "description": "Alerts and comparisons for popular cryptocurrencies",
+  "description": "Alerts and comparisons for popular cryptocurrencies.",
   "browser_action": {
     "default_title": "CryptoBase",
     "default_popup": "popup.html"

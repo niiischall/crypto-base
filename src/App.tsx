@@ -16,7 +16,7 @@ export const App: React.FC<Props> = () => {
 
   return (
     <div className="app-container">
-      <Header />
+      <Header currentPage={value} />
       <Layout currentPage={value} />
       <Navigation currentPage={value} switchPage={handleChange} />
     </div>

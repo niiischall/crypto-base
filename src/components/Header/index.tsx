@@ -4,11 +4,17 @@ import { IconButton } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 
 import './style.css';
-import { Logo } from '../Icons';
+import LogoComponent from '../Logo/Logo';
+import SearchInput from '../SearchInput';
+import User from '../User';
 
-export interface Props {}
+export interface Props {
+  currentPage: string;
+}
 
 export const Header: React.FC<Props> = (props) => {
+  const { currentPage } = props;
+
   const useStyles = makeStyles((theme) => ({
     iconButton: {
       '&:hover': {
@@ -18,9 +24,21 @@ export const Header: React.FC<Props> = (props) => {
   }));
   const classes = useStyles();
 
+  const renderHeaderComponent = () => {
+    let headerComponent = null;
+    if (currentPage === 'home') {
+      headerComponent = <LogoComponent />;
+    } else if (currentPage === 'search') {
+      headerComponent = <SearchInput />;
+    } else if (currentPage === 'profile') {
+      headerComponent = <User />;
+    }
+    return headerComponent;
+  };
+
   return (
     <header className="header">
-      <Logo width={28} height={28} />
+      {renderHeaderComponent()}
       <IconButton
         onClick={() => window.close()}
         className={classes.iconButton}
