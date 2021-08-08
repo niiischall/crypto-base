@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { IconButton } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 
-import './style.css';
 import LogoComponent from '../Logo/Logo';
 import SearchInput from '../SearchInput';
 import User from '../User';
@@ -12,17 +11,26 @@ export interface Props {
   currentPage: string;
 }
 
-export const Header: React.FC<Props> = (props) => {
-  const { currentPage } = props;
-
-  const useStyles = makeStyles((theme) => ({
-    iconButton: {
-      '&:hover': {
-        backgroundColor: 'transparent',
-      },
+const useStyles = makeStyles((theme) => ({
+  header: {
+    border: '2px solid #eeeeee',
+    color: '#979797',
+    width: '100%',
+    padding: '0.5rem 1rem',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  iconButton: {
+    '&:hover': {
+      backgroundColor: 'transparent',
     },
-  }));
+  },
+}));
+
+export const Header: React.FC<Props> = (props) => {
   const classes = useStyles();
+  const { currentPage } = props;
 
   const renderHeaderComponent = () => {
     let headerComponent = null;
@@ -37,7 +45,7 @@ export const Header: React.FC<Props> = (props) => {
   };
 
   return (
-    <header className="header">
+    <header className={classes.header}>
       {renderHeaderComponent()}
       <IconButton
         onClick={() => window.close()}

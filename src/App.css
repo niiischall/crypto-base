@@ -1,8 +1,0 @@
-.app-container {
-  width: 360px;
-  height: 600px;
-  background-color: var(--color-white);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}

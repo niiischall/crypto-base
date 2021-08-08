@@ -5,8 +5,6 @@ import Input from '@material-ui/core/Input';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import SearchIcon from '@material-ui/icons/Search';
 
-import './style.css';
-
 export interface Props {}
 
 const useStyles = makeStyles((theme) => ({

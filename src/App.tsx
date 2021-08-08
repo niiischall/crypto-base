@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './App.css';
+import { makeStyles } from '@material-ui/core/styles';
 
 import Header from './components/Header';
 import Layout from './pages/Layout';
@@ -7,7 +7,19 @@ import Navigation from './components/Navigation';
 
 export interface Props {}
 
+const useStyles = makeStyles((theme) => ({
+  appContainer: {
+    width: 360,
+    height: 600,
+    backgroundColor: '#F8F8F8',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+  },
+}));
+
 export const App: React.FC<Props> = () => {
+  const classes = useStyles();
   const [value, setValue] = useState<string>('home');
 
   const handleChange = (event: any, newValue: string) => {
@@ -15,7 +27,7 @@ export const App: React.FC<Props> = () => {
   };
 
   return (
-    <div className="app-container">
+    <div className={classes.appContainer}>
       <Header currentPage={value} />
       <Layout currentPage={value} />
       <Navigation currentPage={value} switchPage={handleChange} />
