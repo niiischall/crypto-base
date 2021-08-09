@@ -10,13 +10,6 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
   },
-  brandName: {
-    marginLeft: '7.5px',
-    fontSize: '18px',
-    fontWeight: 300,
-    letterSpacing: 0.5,
-    color: '#669900',
-  },
 }));
 
 export const LogoComponent: React.FC<Props> = (props) => {
@@ -25,7 +18,6 @@ export const LogoComponent: React.FC<Props> = (props) => {
   return (
     <div className={classes.logoContainer}>
       <Logo width={28} height={28} />
-      <span className={classes.brandName}>CryptoBase</span>
     </div>
   );
 };

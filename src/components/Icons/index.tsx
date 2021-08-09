@@ -33,3 +33,54 @@ export const Logo: React.FC<IconProps> = (props) => {
     </svg>
   );
 };
+
+export const HomeBackground: React.FC<IconProps> = (props) => {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" {...props}>
+      <path fill="#f8f8f8" d="M0 0h200v200H0z" />
+      <defs>
+        <linearGradient
+          id="prefix__a"
+          gradientUnits="userSpaceOnUse"
+          x1={88}
+          y1={88}
+          x2={0}
+          y2={0}
+        >
+          <stop offset={0} stopColor="#395600" />
+          <stop offset={1} stopColor="#5b8800" />
+        </linearGradient>
+        <linearGradient
+          id="prefix__c"
+          gradientUnits="userSpaceOnUse"
+          x1={75}
+          y1={76}
+          x2={168}
+          y2={160}
+        >
+          <stop offset={0} stopColor="#8f8f8f" />
+          <stop offset={0.09} stopColor="#b3b3b3" />
+          <stop offset={0.18} stopColor="#c9c9c9" />
+          <stop offset={0.31} stopColor="#dbdbdb" />
+          <stop offset={0.44} stopColor="#e8e8e8" />
+          <stop offset={0.59} stopColor="#f2f2f2" />
+          <stop offset={0.75} stopColor="#fafafa" />
+          <stop offset={1} stopColor="#f8f8f8" />
+        </linearGradient>
+        <filter id="prefix__b" x={0} y={0} width="200%" height="200%">
+          <feGaussianBlur in="SourceGraphic" stdDeviation={12} />
+        </filter>
+      </defs>
+      <path fill="url(#prefix__a)" d="M0 174V0h174z" />
+      <path
+        fillOpacity={0.5}
+        filter="url(#prefix__b)"
+        d="M121.8 174C59.2 153.1 0 174 0 174s63.5-73.8 87-94c24.4-20.9 87-80 87-80s-66.1 104.4-52.2 174z"
+      />
+      <path
+        fill="url(#prefix__c)"
+        d="M142.7 142.7C59.2 142.7 0 174 0 174s42-66.3 74.9-99.3S174 0 174 0s-31.3 62.6-31.3 142.7z"
+      />
+    </svg>
+  );
+};
