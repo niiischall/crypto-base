@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "d9271ce0a2379c7eb8e4";
+/******/ 	var hotCurrentHash = "c3d835e30e697a06a957";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -94992,6 +94992,35 @@ const App = () => {
 
 /***/ }),
 
+/***/ "./src/actions/actions.ts":
+/*!********************************!*\
+  !*** ./src/actions/actions.ts ***!
+  \********************************/
+/*! exports provided: getMarketTicker */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getMarketTicker", function() { return getMarketTicker; });
+/* harmony import */ var _services_api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services/api */ "./src/services/api.ts");
+
+async function getMarketTicker() {
+  try {
+    const response = await Object(_services_api__WEBPACK_IMPORTED_MODULE_0__["fetchApi"])(_services_api__WEBPACK_IMPORTED_MODULE_0__["apiEndPoints"].latestListing);
+
+    if (response.ok) {
+      const json = await response.json();
+      return json;
+    } else {
+      console.log('Error in fetching!');
+    }
+  } catch (error) {
+    console.log('Error in fetching!');
+  }
+}
+
+/***/ }),
+
 /***/ "./src/components/Header/index.tsx":
 /*!*****************************************!*\
   !*** ./src/components/Header/index.tsx ***!
@@ -95799,14 +95828,85 @@ var _jsxFileName = "/Users/geekyants/Desktop/Hackathon-21/crypto-base/src/index.
 react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_4__["jsxDEV"])(react__WEBPACK_IMPORTED_MODULE_0___default.a.StrictMode, {
   children: /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_4__["jsxDEV"])(_App__WEBPACK_IMPORTED_MODULE_3__["default"], {}, void 0, false, {
     fileName: _jsxFileName,
-    lineNumber: 9,
+    lineNumber: 8,
     columnNumber: 5
   }, undefined)
 }, void 0, false, {
   fileName: _jsxFileName,
-  lineNumber: 8,
+  lineNumber: 7,
   columnNumber: 3
 }, undefined), document.getElementById('root'));
+
+/***/ }),
+
+/***/ "./src/pages/Home/Listings.tsx":
+/*!*************************************!*\
+  !*** ./src/pages/Home/Listings.tsx ***!
+  \*************************************/
+/*! exports provided: Listings, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Listings", function() { return Listings; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material-ui/core/styles */ "./node_modules/@material-ui/core/esm/styles/index.js");
+/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-dev-runtime */ "./node_modules/react/jsx-dev-runtime.js");
+/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__);
+var _jsxFileName = "/Users/geekyants/Desktop/Hackathon-21/crypto-base/src/pages/Home/Listings.tsx";
+
+
+
+const useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["makeStyles"])(theme => ({
+  listingsContainer: {
+    height: 390,
+    overflowY: 'auto'
+  },
+  listing: {
+    boxShadow: 'rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px',
+    borderRadius: '5px',
+    backgroundColor: '#eeeeee',
+    width: '85%',
+    height: 75,
+    margin: '0px auto',
+    marginTop: 15,
+    marginBottom: 15,
+    transition: 'all .2s linear',
+    '&:hover': {
+      backgroundColor: '#f8f8f8'
+    }
+  }
+}));
+const Listings = ({
+  data
+}) => {
+  const classes = useStyles();
+  return /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__["jsxDEV"])("div", {
+    className: classes.listingsContainer,
+    children: data.map((coin, index) => {
+      return /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__["jsxDEV"])("div", {
+        className: classes.listing,
+        children: /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__["jsxDEV"])("span", {
+          children: "\xA0"
+        }, void 0, false, {
+          fileName: _jsxFileName,
+          lineNumber: 38,
+          columnNumber: 13
+        }, undefined)
+      }, index, false, {
+        fileName: _jsxFileName,
+        lineNumber: 37,
+        columnNumber: 11
+      }, undefined);
+    })
+  }, void 0, false, {
+    fileName: _jsxFileName,
+    lineNumber: 34,
+    columnNumber: 5
+  }, undefined);
+};
+/* harmony default export */ __webpack_exports__["default"] = (Listings);
 
 /***/ }),
 
@@ -95827,9 +95927,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_icons_ArrowRightAlt__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/icons/ArrowRightAlt */ "./node_modules/@material-ui/icons/ArrowRightAlt.js");
 /* harmony import */ var _material_ui_icons_ArrowRightAlt__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_ArrowRightAlt__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _components_Icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/Icons */ "./src/components/Icons/index.tsx");
-/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-dev-runtime */ "./node_modules/react/jsx-dev-runtime.js");
-/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _Listings__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Listings */ "./src/pages/Home/Listings.tsx");
+/* harmony import */ var _actions_actions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../actions/actions */ "./src/actions/actions.ts");
+/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-dev-runtime */ "./node_modules/react/jsx-dev-runtime.js");
+/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_7__);
 var _jsxFileName = "/Users/geekyants/Desktop/Hackathon-21/crypto-base/src/pages/Home/index.tsx";
+
+
 
 
 
@@ -95838,7 +95942,9 @@ var _jsxFileName = "/Users/geekyants/Desktop/Hackathon-21/crypto-base/src/pages/
 
 const useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["makeStyles"])(theme => ({
   homeContainer: {
-    flex: 1
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'column'
   },
   homeHeader: {
     display: 'flex',
@@ -95879,15 +95985,16 @@ const StyledButton = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1_
   endIcon: {
     margin: 0
   }
-}))(props => /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_5__["jsxDEV"])(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+}))(props => /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_7__["jsxDEV"])(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Button"], {
   disableRipple: true,
   ...props
 }, void 0, false, {
   fileName: _jsxFileName,
-  lineNumber: 52,
+  lineNumber: 56,
   columnNumber: 21
 }, undefined));
 const Home = props => {
+  const [listings, setListings] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
   const classes = useStyles();
 
   const navigateToLearnMore = () => {
@@ -95897,59 +96004,74 @@ const Home = props => {
     });
   };
 
-  return /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_5__["jsxDEV"])("div", {
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    getListings();
+  }, []);
+
+  async function getListings() {
+    const fetchedListings = await Object(_actions_actions__WEBPACK_IMPORTED_MODULE_6__["getMarketTicker"])();
+    setListings(fetchedListings.data);
+  }
+
+  return /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_7__["jsxDEV"])("div", {
     className: classes.homeContainer,
-    children: /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_5__["jsxDEV"])("div", {
+    children: [/*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_7__["jsxDEV"])("div", {
       className: classes.homeHeader,
-      children: [/*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_5__["jsxDEV"])(_components_Icons__WEBPACK_IMPORTED_MODULE_4__["HomeBackground"], {
+      children: [/*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_7__["jsxDEV"])(_components_Icons__WEBPACK_IMPORTED_MODULE_4__["HomeBackground"], {
         width: 100,
         height: 100
       }, void 0, false, {
         fileName: _jsxFileName,
-        lineNumber: 64,
+        lineNumber: 78,
         columnNumber: 9
-      }, undefined), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_5__["jsxDEV"])("div", {
+      }, undefined), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_7__["jsxDEV"])("div", {
         className: classes.textBox,
-        children: [/*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_5__["jsxDEV"])("h1", {
+        children: [/*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_7__["jsxDEV"])("h1", {
           className: classes.heading,
           children: "CryptoBase"
         }, void 0, false, {
           fileName: _jsxFileName,
-          lineNumber: 66,
+          lineNumber: 80,
           columnNumber: 11
-        }, undefined), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_5__["jsxDEV"])("span", {
+        }, undefined), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_7__["jsxDEV"])("span", {
           className: classes.text,
           children: "Personalize your crypto experience."
         }, void 0, false, {
           fileName: _jsxFileName,
-          lineNumber: 67,
+          lineNumber: 81,
           columnNumber: 11
-        }, undefined), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_5__["jsxDEV"])(StyledButton, {
+        }, undefined), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_7__["jsxDEV"])(StyledButton, {
           onClick: navigateToLearnMore,
-          endIcon: /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_5__["jsxDEV"])(_material_ui_icons_ArrowRightAlt__WEBPACK_IMPORTED_MODULE_3___default.a, {}, void 0, false, {
+          endIcon: /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_7__["jsxDEV"])(_material_ui_icons_ArrowRightAlt__WEBPACK_IMPORTED_MODULE_3___default.a, {}, void 0, false, {
             fileName: _jsxFileName,
-            lineNumber: 72,
+            lineNumber: 86,
             columnNumber: 22
           }, undefined),
           children: "Learn More"
         }, void 0, false, {
           fileName: _jsxFileName,
-          lineNumber: 70,
+          lineNumber: 84,
           columnNumber: 11
         }, undefined)]
       }, void 0, true, {
         fileName: _jsxFileName,
-        lineNumber: 65,
+        lineNumber: 79,
         columnNumber: 9
       }, undefined)]
     }, void 0, true, {
       fileName: _jsxFileName,
-      lineNumber: 63,
+      lineNumber: 77,
       columnNumber: 7
-    }, undefined)
-  }, void 0, false, {
+    }, undefined), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_7__["jsxDEV"])(_Listings__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      data: listings
+    }, void 0, false, {
+      fileName: _jsxFileName,
+      lineNumber: 92,
+      columnNumber: 7
+    }, undefined)]
+  }, void 0, true, {
     fileName: _jsxFileName,
-    lineNumber: 62,
+    lineNumber: 76,
     columnNumber: 5
   }, undefined);
 };
@@ -96095,6 +96217,48 @@ const Search = props => {
   }, undefined);
 };
 /* harmony default export */ __webpack_exports__["default"] = (Search);
+
+/***/ }),
+
+/***/ "./src/services/api.ts":
+/*!*****************************!*\
+  !*** ./src/services/api.ts ***!
+  \*****************************/
+/*! exports provided: apiEndPoints, fetchApi */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "apiEndPoints", function() { return apiEndPoints; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchApi", function() { return fetchApi; });
+const baseAPI = 'https://pro-api.coinmarketcap.com/';
+const apiVersion = 'v1';
+const apiKey = `&CMC_PRO_API_KEY=${"3b3805da-f1c9-49e0-b771-1dbc44005362"}`;
+const apiEndPoints = {
+  latestListing: '/cryptocurrency/listings/latest?limit=25'
+};
+async function fetchApi(endPoint, payload, method = 'get', headers) {
+  let path = `${baseAPI}${apiVersion}${endPoint}${apiKey}`;
+  const headersObject = { ...headers
+  };
+  let request = {
+    body: JSON.stringify(payload),
+    headers: headersObject,
+    method: method.toLowerCase()
+  };
+
+  try {
+    return fetch(path, request);
+  } catch (e) {
+    const stringError = e && e.toString && e.toString();
+    const type = stringError === 'TypeError: Network request failed' ? 'networkError' : 'unknown';
+    const error = {
+      text: stringError,
+      type
+    };
+    throw error;
+  }
+}
 
 /***/ }),
 

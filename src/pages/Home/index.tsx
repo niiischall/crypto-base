@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import { Button } from '@material-ui/core';
 import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
 
 import { HomeBackground } from '../../components/Icons';
+import Listings from './Listings';
+import { getMarketTicker } from '../../actions/actions';
 
 const useStyles = makeStyles((theme) => ({
   homeContainer: {
     flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
   },
   homeHeader: {
     display: 'flex',
@@ -52,11 +56,21 @@ const StyledButton = withStyles((theme) => ({
 }))((props: any) => <Button disableRipple {...props} />);
 
 export const Home: React.FC<{}> = (props) => {
+  const [listings, setListings] = useState<any[]>([]);
   const classes = useStyles();
 
   const navigateToLearnMore = () => {
     chrome.tabs.create({ url: 'http://www.google.com', active: true });
   };
+
+  useEffect(() => {
+    getListings();
+  }, []);
+
+  async function getListings() {
+    const fetchedListings = await getMarketTicker();
+    setListings(fetchedListings.data);
+  }
 
   return (
     <div className={classes.homeContainer}>
@@ -75,6 +89,7 @@ export const Home: React.FC<{}> = (props) => {
           </StyledButton>
         </div>
       </div>
+      <Listings data={listings} />
     </div>
   );
 };
