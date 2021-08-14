@@ -7,12 +7,10 @@ export interface Props {
 
 const useStyles = makeStyles((theme) => ({
   listingsContainer: {
-    height: 390,
+    height: '355px',
     overflowY: 'auto',
   },
   listing: {
-    boxShadow:
-      'rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px',
     borderRadius: '5px',
     backgroundColor: '#eeeeee',
     width: '85%',
@@ -23,11 +21,12 @@ const useStyles = makeStyles((theme) => ({
     transition: 'all .2s linear',
     '&:hover': {
       backgroundColor: '#f8f8f8',
+      boxShadow: '0 0 0 1px rgb(0 0 0 / 5%), 0 5px 15px rgb(0 0 0 / 15%)',
     },
   },
 }));
 
-export const Listings: React.FC<Props> = ({ data }) => {
+export const Popular: React.FC<Props> = ({ data }) => {
   const classes = useStyles();
 
   return (
@@ -43,4 +42,4 @@ export const Listings: React.FC<Props> = ({ data }) => {
   );
 };
 
-export default Listings;
+export default Popular;

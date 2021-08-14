@@ -1,11 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import { Button } from '@material-ui/core';
 import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import StarIcon from '@material-ui/icons/Star';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 
 import { HomeBackground } from '../../components/Icons';
-import Listings from './Listings';
-import { getMarketTicker } from '../../actions/actions';
+import Popular from './Popular';
+import Following from './Following';
 
 const useStyles = makeStyles((theme) => ({
   homeContainer: {
@@ -18,6 +22,10 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'flex-start',
     alignItems: 'center',
     width: '100%',
+  },
+  homeNavigation: {
+    display: 'flex',
+    flexDirection: 'column',
   },
   textBox: {
     flex: 1,
@@ -34,6 +42,10 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 12,
     letterSpacing: -0.5,
     fontWeight: 300,
+  },
+  icon: {
+    marginBottom: '0px !important',
+    marginRight: 5,
   },
 }));
 
@@ -55,22 +67,55 @@ const StyledButton = withStyles((theme) => ({
   },
 }))((props: any) => <Button disableRipple {...props} />);
 
+const StyledTabs = withStyles({
+  root: {
+    width: '100%',
+    minHeight: 30,
+  },
+  indicator: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'transparent',
+    '& > span': {
+      width: '100%',
+      height: 5,
+      backgroundColor: ' #669900',
+    },
+  },
+})((props: any) => (
+  <Tabs {...props} TabIndicatorProps={{ children: <span /> }} />
+));
+
+const StyledTab = withStyles((theme) => ({
+  root: {
+    width: '50%',
+    minHeight: 30,
+    textTransform: 'none',
+    color: '#323232',
+    fontSize: 14,
+    fontWeight: 400,
+    '&:focus': {
+      fontWeight: 600,
+    },
+  },
+  wrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+}))((props: any) => <Tab disableRipple {...props} />);
+
 export const Home: React.FC<{}> = (props) => {
-  const [listings, setListings] = useState<any[]>([]);
+  const [currentTab, setCurrentTab] = useState<number>(0);
   const classes = useStyles();
 
   const navigateToLearnMore = () => {
     chrome.tabs.create({ url: 'http://www.google.com', active: true });
   };
 
-  useEffect(() => {
-    getListings();
-  }, []);
-
-  async function getListings() {
-    const fetchedListings = await getMarketTicker();
-    setListings(fetchedListings.data);
-  }
+  const handleChange = (event: any, newValue: number) => {
+    setCurrentTab(newValue);
+  };
 
   return (
     <div className={classes.homeContainer}>
@@ -89,7 +134,24 @@ export const Home: React.FC<{}> = (props) => {
           </StyledButton>
         </div>
       </div>
-      <Listings data={listings} />
+      <div className={classes.homeNavigation}>
+        <StyledTabs
+          value={currentTab}
+          onChange={handleChange}
+          aria-label="icon label tabs example"
+        >
+          <StyledTab
+            icon={<StarIcon className={classes.icon} />}
+            label="Popular"
+          />
+          <StyledTab
+            icon={<FavoriteIcon className={classes.icon} />}
+            label="Following"
+          />
+        </StyledTabs>
+      </div>
+      {currentTab === 0 && <Popular data={[]} />}
+      {currentTab === 1 && <Following />}
     </div>
   );
 };

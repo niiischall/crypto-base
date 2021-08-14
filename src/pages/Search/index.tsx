@@ -4,15 +4,56 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
   searchContainer: {
     flex: 1,
+    height: '100%',
+    backgroundColor: '#eeeeee',
+    overflowY: 'auto',
+    paddingBottom: 15,
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    paddingLeft: 15,
+    paddingRight: 15,
+    width: '100%',
+  },
+  searchHeader: {
+    height: '10%',
+    display: 'flex',
+    alignItems: 'center',
+    width: '100%',
+  },
+  searchHeading: {
+    display: 'flex',
+    fontSize: 14,
+    fontWeight: 700,
+  },
+  trendingCoin: {
+    backgroundColor: 'white',
+    width: 150,
+    height: 200,
+    marginBottom: 15,
+    boxShadow: '0px 2px 9px 0px rgb(0 0 0 / 2%)',
+    borderRadius: '3px',
   },
 }));
 
 export const Search: React.FC<{}> = (props) => {
   const classes = useStyles();
 
+  const data = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
+
   return (
     <div className={classes.searchContainer}>
-      <span>&nbsp;</span>
+      <div className={classes.searchHeader}>
+        <span className={classes.searchHeading}>Trending Now</span>
+      </div>
+      {data.map((item, key) => {
+        return (
+          <div className={classes.trendingCoin}>
+            <span>&nbsp;</span>
+          </div>
+        );
+      })}
     </div>
   );
 };

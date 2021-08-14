@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "c3d835e30e697a06a957";
+/******/ 	var hotCurrentHash = "9d8d1a381e33728edfb4";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -39695,6 +39695,37 @@ exports.default = _default;
 
 /***/ }),
 
+/***/ "./node_modules/@material-ui/icons/Favorite.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/@material-ui/icons/Favorite.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+var _interopRequireWildcard = __webpack_require__(/*! @babel/runtime/helpers/interopRequireWildcard */ "./node_modules/@babel/runtime/helpers/interopRequireWildcard.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var React = _interopRequireWildcard(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(/*! ./utils/createSvgIcon */ "./node_modules/@material-ui/icons/utils/createSvgIcon.js"));
+
+var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
+  d: "M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+}), 'Favorite');
+
+exports.default = _default;
+
+/***/ }),
+
 /***/ "./node_modules/@material-ui/icons/Home.js":
 /*!*************************************************!*\
   !*** ./node_modules/@material-ui/icons/Home.js ***!
@@ -39783,6 +39814,37 @@ var _createSvgIcon = _interopRequireDefault(__webpack_require__(/*! ./utils/crea
 var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
   d: "M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
 }), 'Search');
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/icons/Star.js":
+/*!*************************************************!*\
+  !*** ./node_modules/@material-ui/icons/Star.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+var _interopRequireWildcard = __webpack_require__(/*! @babel/runtime/helpers/interopRequireWildcard */ "./node_modules/@babel/runtime/helpers/interopRequireWildcard.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var React = _interopRequireWildcard(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(/*! ./utils/createSvgIcon */ "./node_modules/@material-ui/icons/utils/createSvgIcon.js"));
+
+var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
+  d: "M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+}), 'Star');
 
 exports.default = _default;
 
@@ -94992,35 +95054,6 @@ const App = () => {
 
 /***/ }),
 
-/***/ "./src/actions/actions.ts":
-/*!********************************!*\
-  !*** ./src/actions/actions.ts ***!
-  \********************************/
-/*! exports provided: getMarketTicker */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getMarketTicker", function() { return getMarketTicker; });
-/* harmony import */ var _services_api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services/api */ "./src/services/api.ts");
-
-async function getMarketTicker() {
-  try {
-    const response = await Object(_services_api__WEBPACK_IMPORTED_MODULE_0__["fetchApi"])(_services_api__WEBPACK_IMPORTED_MODULE_0__["apiEndPoints"].latestListing);
-
-    if (response.ok) {
-      const json = await response.json();
-      return json;
-    } else {
-      console.log('Error in fetching!');
-    }
-  } catch (error) {
-    console.log('Error in fetching!');
-  }
-}
-
-/***/ }),
-
 /***/ "./src/components/Header/index.tsx":
 /*!*****************************************!*\
   !*** ./src/components/Header/index.tsx ***!
@@ -95053,7 +95086,8 @@ var _jsxFileName = "/Users/geekyants/Desktop/Hackathon-21/crypto-base/src/compon
 
 const useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["makeStyles"])(theme => ({
   header: {
-    border: '2px solid #eeeeee',
+    borderBottom: '1px solid #eeeeee',
+    boxShadow: '0px 2px 6px 0px rgb(0 0 0 / 5%)',
     color: '#979797',
     width: '100%',
     padding: '0.5rem 1rem',
@@ -95079,19 +95113,19 @@ const Header = props => {
     if (currentPage === 'home') {
       headerComponent = /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_7__["jsxDEV"])(_Logo_Logo__WEBPACK_IMPORTED_MODULE_4__["default"], {}, void 0, false, {
         fileName: _jsxFileName,
-        lineNumber: 38,
+        lineNumber: 39,
         columnNumber: 25
       }, undefined);
     } else if (currentPage === 'search') {
       headerComponent = /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_7__["jsxDEV"])(_SearchInput__WEBPACK_IMPORTED_MODULE_5__["default"], {}, void 0, false, {
         fileName: _jsxFileName,
-        lineNumber: 40,
+        lineNumber: 41,
         columnNumber: 25
       }, undefined);
     } else if (currentPage === 'profile') {
       headerComponent = /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_7__["jsxDEV"])(_User__WEBPACK_IMPORTED_MODULE_6__["default"], {}, void 0, false, {
         fileName: _jsxFileName,
-        lineNumber: 42,
+        lineNumber: 43,
         columnNumber: 25
       }, undefined);
     }
@@ -95110,17 +95144,17 @@ const Header = props => {
         fontSize: "large"
       }, void 0, false, {
         fileName: _jsxFileName,
-        lineNumber: 55,
+        lineNumber: 56,
         columnNumber: 9
       }, undefined)
     }, void 0, false, {
       fileName: _jsxFileName,
-      lineNumber: 50,
+      lineNumber: 51,
       columnNumber: 7
     }, undefined)]
   }, void 0, true, {
     fileName: _jsxFileName,
-    lineNumber: 48,
+    lineNumber: 49,
     columnNumber: 5
   }, undefined);
 };
@@ -95828,43 +95862,88 @@ var _jsxFileName = "/Users/geekyants/Desktop/Hackathon-21/crypto-base/src/index.
 react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_4__["jsxDEV"])(react__WEBPACK_IMPORTED_MODULE_0___default.a.StrictMode, {
   children: /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_4__["jsxDEV"])(_App__WEBPACK_IMPORTED_MODULE_3__["default"], {}, void 0, false, {
     fileName: _jsxFileName,
-    lineNumber: 8,
+    lineNumber: 9,
     columnNumber: 5
   }, undefined)
 }, void 0, false, {
   fileName: _jsxFileName,
-  lineNumber: 7,
+  lineNumber: 8,
   columnNumber: 3
 }, undefined), document.getElementById('root'));
 
 /***/ }),
 
-/***/ "./src/pages/Home/Listings.tsx":
-/*!*************************************!*\
-  !*** ./src/pages/Home/Listings.tsx ***!
-  \*************************************/
-/*! exports provided: Listings, default */
+/***/ "./src/pages/Home/Following.tsx":
+/*!**************************************!*\
+  !*** ./src/pages/Home/Following.tsx ***!
+  \**************************************/
+/*! exports provided: Following, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Listings", function() { return Listings; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Following", function() { return Following; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material-ui/core/styles */ "./node_modules/@material-ui/core/esm/styles/index.js");
 /* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-dev-runtime */ "./node_modules/react/jsx-dev-runtime.js");
 /* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__);
-var _jsxFileName = "/Users/geekyants/Desktop/Hackathon-21/crypto-base/src/pages/Home/Listings.tsx";
+var _jsxFileName = "/Users/geekyants/Desktop/Hackathon-21/crypto-base/src/pages/Home/Following.tsx";
+
+
+
+const useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["makeStyles"])(theme => ({
+  followingContainer: {
+    height: '355px',
+    width: '100%'
+  }
+}));
+const Following = props => {
+  const classes = useStyles();
+  return /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__["jsxDEV"])("div", {
+    className: classes.followingContainer,
+    children: /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__["jsxDEV"])("span", {
+      children: "\xA0"
+    }, void 0, false, {
+      fileName: _jsxFileName,
+      lineNumber: 18,
+      columnNumber: 7
+    }, undefined)
+  }, void 0, false, {
+    fileName: _jsxFileName,
+    lineNumber: 17,
+    columnNumber: 5
+  }, undefined);
+};
+/* harmony default export */ __webpack_exports__["default"] = (Following);
+
+/***/ }),
+
+/***/ "./src/pages/Home/Popular.tsx":
+/*!************************************!*\
+  !*** ./src/pages/Home/Popular.tsx ***!
+  \************************************/
+/*! exports provided: Popular, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Popular", function() { return Popular; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material-ui/core/styles */ "./node_modules/@material-ui/core/esm/styles/index.js");
+/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-dev-runtime */ "./node_modules/react/jsx-dev-runtime.js");
+/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__);
+var _jsxFileName = "/Users/geekyants/Desktop/Hackathon-21/crypto-base/src/pages/Home/Popular.tsx";
 
 
 
 const useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["makeStyles"])(theme => ({
   listingsContainer: {
-    height: 390,
+    height: '355px',
     overflowY: 'auto'
   },
   listing: {
-    boxShadow: 'rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px',
     borderRadius: '5px',
     backgroundColor: '#eeeeee',
     width: '85%',
@@ -95874,11 +95953,12 @@ const useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["
     marginBottom: 15,
     transition: 'all .2s linear',
     '&:hover': {
-      backgroundColor: '#f8f8f8'
+      backgroundColor: '#f8f8f8',
+      boxShadow: '0 0 0 1px rgb(0 0 0 / 5%), 0 5px 15px rgb(0 0 0 / 15%)'
     }
   }
 }));
-const Listings = ({
+const Popular = ({
   data
 }) => {
   const classes = useStyles();
@@ -95891,22 +95971,22 @@ const Listings = ({
           children: "\xA0"
         }, void 0, false, {
           fileName: _jsxFileName,
-          lineNumber: 38,
+          lineNumber: 37,
           columnNumber: 13
         }, undefined)
       }, index, false, {
         fileName: _jsxFileName,
-        lineNumber: 37,
+        lineNumber: 36,
         columnNumber: 11
       }, undefined);
     })
   }, void 0, false, {
     fileName: _jsxFileName,
-    lineNumber: 34,
+    lineNumber: 33,
     columnNumber: 5
   }, undefined);
 };
-/* harmony default export */ __webpack_exports__["default"] = (Listings);
+/* harmony default export */ __webpack_exports__["default"] = (Popular);
 
 /***/ }),
 
@@ -95926,12 +96006,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/index.js");
 /* harmony import */ var _material_ui_icons_ArrowRightAlt__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/icons/ArrowRightAlt */ "./node_modules/@material-ui/icons/ArrowRightAlt.js");
 /* harmony import */ var _material_ui_icons_ArrowRightAlt__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_ArrowRightAlt__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _components_Icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/Icons */ "./src/components/Icons/index.tsx");
-/* harmony import */ var _Listings__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Listings */ "./src/pages/Home/Listings.tsx");
-/* harmony import */ var _actions_actions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../actions/actions */ "./src/actions/actions.ts");
-/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-dev-runtime */ "./node_modules/react/jsx-dev-runtime.js");
-/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _material_ui_core_Tabs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core/Tabs */ "./node_modules/@material-ui/core/esm/Tabs/index.js");
+/* harmony import */ var _material_ui_core_Tab__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core/Tab */ "./node_modules/@material-ui/core/esm/Tab/index.js");
+/* harmony import */ var _material_ui_icons_Star__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/icons/Star */ "./node_modules/@material-ui/icons/Star.js");
+/* harmony import */ var _material_ui_icons_Star__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Star__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _material_ui_icons_Favorite__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/icons/Favorite */ "./node_modules/@material-ui/icons/Favorite.js");
+/* harmony import */ var _material_ui_icons_Favorite__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Favorite__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _components_Icons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/Icons */ "./src/components/Icons/index.tsx");
+/* harmony import */ var _Popular__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Popular */ "./src/pages/Home/Popular.tsx");
+/* harmony import */ var _Following__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Following */ "./src/pages/Home/Following.tsx");
+/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react/jsx-dev-runtime */ "./node_modules/react/jsx-dev-runtime.js");
+/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_11__);
 var _jsxFileName = "/Users/geekyants/Desktop/Hackathon-21/crypto-base/src/pages/Home/index.tsx";
+
+
+
+
 
 
 
@@ -95952,6 +96042,10 @@ const useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["
     alignItems: 'center',
     width: '100%'
   },
+  homeNavigation: {
+    display: 'flex',
+    flexDirection: 'column'
+  },
   textBox: {
     flex: 1,
     textAlign: 'center'
@@ -95967,6 +96061,10 @@ const useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["
     fontSize: 12,
     letterSpacing: -0.5,
     fontWeight: 300
+  },
+  icon: {
+    marginBottom: '0px !important',
+    marginRight: 5
   }
 }));
 const StyledButton = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["withStyles"])(theme => ({
@@ -95985,16 +96083,69 @@ const StyledButton = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1_
   endIcon: {
     margin: 0
   }
-}))(props => /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_7__["jsxDEV"])(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+}))(props => /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_11__["jsxDEV"])(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Button"], {
   disableRipple: true,
   ...props
 }, void 0, false, {
   fileName: _jsxFileName,
-  lineNumber: 56,
+  lineNumber: 68,
+  columnNumber: 21
+}, undefined));
+const StyledTabs = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["withStyles"])({
+  root: {
+    width: '100%',
+    minHeight: 30
+  },
+  indicator: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'transparent',
+    '& > span': {
+      width: '100%',
+      height: 5,
+      backgroundColor: ' #669900'
+    }
+  }
+})(props => /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_11__["jsxDEV"])(_material_ui_core_Tabs__WEBPACK_IMPORTED_MODULE_4__["default"], { ...props,
+  TabIndicatorProps: {
+    children: /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_11__["jsxDEV"])("span", {}, void 0, false, {
+      fileName: _jsxFileName,
+      lineNumber: 87,
+      columnNumber: 51
+    }, undefined)
+  }
+}, void 0, false, {
+  fileName: _jsxFileName,
+  lineNumber: 87,
+  columnNumber: 3
+}, undefined));
+const StyledTab = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["withStyles"])(theme => ({
+  root: {
+    width: '50%',
+    minHeight: 30,
+    textTransform: 'none',
+    color: '#323232',
+    fontSize: 14,
+    fontWeight: 400,
+    '&:focus': {
+      fontWeight: 600
+    }
+  },
+  wrapper: {
+    flexDirection: 'row',
+    alignItems: 'center'
+  }
+}))(props => /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_11__["jsxDEV"])(_material_ui_core_Tab__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  disableRipple: true,
+  ...props
+}, void 0, false, {
+  fileName: _jsxFileName,
+  lineNumber: 106,
   columnNumber: 21
 }, undefined));
 const Home = props => {
-  const [listings, setListings] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
+  const [currentTab, setCurrentTab] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(0);
   const classes = useStyles();
 
   const navigateToLearnMore = () => {
@@ -96004,74 +96155,115 @@ const Home = props => {
     });
   };
 
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
-    getListings();
-  }, []);
+  const handleChange = (event, newValue) => {
+    setCurrentTab(newValue);
+  };
 
-  async function getListings() {
-    const fetchedListings = await Object(_actions_actions__WEBPACK_IMPORTED_MODULE_6__["getMarketTicker"])();
-    setListings(fetchedListings.data);
-  }
-
-  return /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_7__["jsxDEV"])("div", {
+  return /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_11__["jsxDEV"])("div", {
     className: classes.homeContainer,
-    children: [/*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_7__["jsxDEV"])("div", {
+    children: [/*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_11__["jsxDEV"])("div", {
       className: classes.homeHeader,
-      children: [/*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_7__["jsxDEV"])(_components_Icons__WEBPACK_IMPORTED_MODULE_4__["HomeBackground"], {
+      children: [/*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_11__["jsxDEV"])(_components_Icons__WEBPACK_IMPORTED_MODULE_8__["HomeBackground"], {
         width: 100,
         height: 100
       }, void 0, false, {
         fileName: _jsxFileName,
-        lineNumber: 78,
+        lineNumber: 123,
         columnNumber: 9
-      }, undefined), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_7__["jsxDEV"])("div", {
+      }, undefined), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_11__["jsxDEV"])("div", {
         className: classes.textBox,
-        children: [/*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_7__["jsxDEV"])("h1", {
+        children: [/*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_11__["jsxDEV"])("h1", {
           className: classes.heading,
           children: "CryptoBase"
         }, void 0, false, {
           fileName: _jsxFileName,
-          lineNumber: 80,
+          lineNumber: 125,
           columnNumber: 11
-        }, undefined), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_7__["jsxDEV"])("span", {
+        }, undefined), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_11__["jsxDEV"])("span", {
           className: classes.text,
           children: "Personalize your crypto experience."
         }, void 0, false, {
           fileName: _jsxFileName,
-          lineNumber: 81,
+          lineNumber: 126,
           columnNumber: 11
-        }, undefined), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_7__["jsxDEV"])(StyledButton, {
+        }, undefined), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_11__["jsxDEV"])(StyledButton, {
           onClick: navigateToLearnMore,
-          endIcon: /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_7__["jsxDEV"])(_material_ui_icons_ArrowRightAlt__WEBPACK_IMPORTED_MODULE_3___default.a, {}, void 0, false, {
+          endIcon: /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_11__["jsxDEV"])(_material_ui_icons_ArrowRightAlt__WEBPACK_IMPORTED_MODULE_3___default.a, {}, void 0, false, {
             fileName: _jsxFileName,
-            lineNumber: 86,
+            lineNumber: 131,
             columnNumber: 22
           }, undefined),
           children: "Learn More"
         }, void 0, false, {
           fileName: _jsxFileName,
-          lineNumber: 84,
+          lineNumber: 129,
           columnNumber: 11
         }, undefined)]
       }, void 0, true, {
         fileName: _jsxFileName,
-        lineNumber: 79,
+        lineNumber: 124,
         columnNumber: 9
       }, undefined)]
     }, void 0, true, {
       fileName: _jsxFileName,
-      lineNumber: 77,
+      lineNumber: 122,
       columnNumber: 7
-    }, undefined), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_7__["jsxDEV"])(_Listings__WEBPACK_IMPORTED_MODULE_5__["default"], {
-      data: listings
+    }, undefined), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_11__["jsxDEV"])("div", {
+      className: classes.homeNavigation,
+      children: /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_11__["jsxDEV"])(StyledTabs, {
+        value: currentTab,
+        onChange: handleChange,
+        "aria-label": "icon label tabs example",
+        children: [/*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_11__["jsxDEV"])(StyledTab, {
+          icon: /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_11__["jsxDEV"])(_material_ui_icons_Star__WEBPACK_IMPORTED_MODULE_6___default.a, {
+            className: classes.icon
+          }, void 0, false, {
+            fileName: _jsxFileName,
+            lineNumber: 144,
+            columnNumber: 19
+          }, undefined),
+          label: "Popular"
+        }, void 0, false, {
+          fileName: _jsxFileName,
+          lineNumber: 143,
+          columnNumber: 11
+        }, undefined), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_11__["jsxDEV"])(StyledTab, {
+          icon: /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_11__["jsxDEV"])(_material_ui_icons_Favorite__WEBPACK_IMPORTED_MODULE_7___default.a, {
+            className: classes.icon
+          }, void 0, false, {
+            fileName: _jsxFileName,
+            lineNumber: 148,
+            columnNumber: 19
+          }, undefined),
+          label: "Following"
+        }, void 0, false, {
+          fileName: _jsxFileName,
+          lineNumber: 147,
+          columnNumber: 11
+        }, undefined)]
+      }, void 0, true, {
+        fileName: _jsxFileName,
+        lineNumber: 138,
+        columnNumber: 9
+      }, undefined)
     }, void 0, false, {
       fileName: _jsxFileName,
-      lineNumber: 92,
+      lineNumber: 137,
       columnNumber: 7
+    }, undefined), currentTab === 0 && /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_11__["jsxDEV"])(_Popular__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      data: []
+    }, void 0, false, {
+      fileName: _jsxFileName,
+      lineNumber: 153,
+      columnNumber: 28
+    }, undefined), currentTab === 1 && /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_11__["jsxDEV"])(_Following__WEBPACK_IMPORTED_MODULE_10__["default"], {}, void 0, false, {
+      fileName: _jsxFileName,
+      lineNumber: 154,
+      columnNumber: 28
     }, undefined)]
   }, void 0, true, {
     fileName: _jsxFileName,
-    lineNumber: 76,
+    lineNumber: 121,
     columnNumber: 5
   }, undefined);
 };
@@ -96196,69 +96388,81 @@ var _jsxFileName = "/Users/geekyants/Desktop/Hackathon-21/crypto-base/src/pages/
 
 const useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["makeStyles"])(theme => ({
   searchContainer: {
-    flex: 1
+    flex: 1,
+    height: '100%',
+    backgroundColor: '#eeeeee',
+    overflowY: 'auto',
+    paddingBottom: 15,
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    paddingLeft: 15,
+    paddingRight: 15,
+    width: '100%'
+  },
+  searchHeader: {
+    height: '10%',
+    display: 'flex',
+    alignItems: 'center',
+    width: '100%'
+  },
+  searchHeading: {
+    display: 'flex',
+    fontSize: 14,
+    fontWeight: 700
+  },
+  trendingCoin: {
+    backgroundColor: 'white',
+    width: 150,
+    height: 200,
+    marginBottom: 15,
+    boxShadow: '0px 2px 9px 0px rgb(0 0 0 / 2%)',
+    borderRadius: '3px'
   }
 }));
 const Search = props => {
   const classes = useStyles();
+  const data = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
   return /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__["jsxDEV"])("div", {
     className: classes.searchContainer,
-    children: /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__["jsxDEV"])("span", {
-      children: "\xA0"
+    children: [/*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__["jsxDEV"])("div", {
+      className: classes.searchHeader,
+      children: /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__["jsxDEV"])("span", {
+        className: classes.searchHeading,
+        children: "Trending Now"
+      }, void 0, false, {
+        fileName: _jsxFileName,
+        lineNumber: 48,
+        columnNumber: 9
+      }, undefined)
     }, void 0, false, {
       fileName: _jsxFileName,
-      lineNumber: 15,
+      lineNumber: 47,
       columnNumber: 7
-    }, undefined)
-  }, void 0, false, {
+    }, undefined), data.map((item, key) => {
+      return /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__["jsxDEV"])("div", {
+        className: classes.trendingCoin,
+        children: /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__["jsxDEV"])("span", {
+          children: "\xA0"
+        }, void 0, false, {
+          fileName: _jsxFileName,
+          lineNumber: 53,
+          columnNumber: 13
+        }, undefined)
+      }, void 0, false, {
+        fileName: _jsxFileName,
+        lineNumber: 52,
+        columnNumber: 11
+      }, undefined);
+    })]
+  }, void 0, true, {
     fileName: _jsxFileName,
-    lineNumber: 14,
+    lineNumber: 46,
     columnNumber: 5
   }, undefined);
 };
 /* harmony default export */ __webpack_exports__["default"] = (Search);
-
-/***/ }),
-
-/***/ "./src/services/api.ts":
-/*!*****************************!*\
-  !*** ./src/services/api.ts ***!
-  \*****************************/
-/*! exports provided: apiEndPoints, fetchApi */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "apiEndPoints", function() { return apiEndPoints; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchApi", function() { return fetchApi; });
-const baseAPI = 'https://pro-api.coinmarketcap.com/';
-const apiVersion = 'v1';
-const apiKey = `&CMC_PRO_API_KEY=${"3b3805da-f1c9-49e0-b771-1dbc44005362"}`;
-const apiEndPoints = {
-  latestListing: '/cryptocurrency/listings/latest?limit=25'
-};
-async function fetchApi(endPoint, payload, method = 'get', headers) {
-  let path = `${baseAPI}${apiVersion}${endPoint}${apiKey}`;
-  const headersObject = { ...headers
-  };
-  let request = {
-    body: JSON.stringify(payload),
-    headers: headersObject,
-    method: method.toLowerCase()
-  };
-
-  try {
-    return fetch(path, request);
-  } catch (e) {
-    const stringError = e && e.toString && e.toString();
-    const type = stringError === 'TypeError: Network request failed' ? 'networkError' : 'unknown';
-    const error = {
-      text: stringError,
-      type
-    };
-    throw error;
-  }
-}
 
 /***/ }),
 

@@ -13,7 +13,8 @@ export interface Props {
 
 const useStyles = makeStyles((theme) => ({
   header: {
-    border: '2px solid #eeeeee',
+    borderBottom: '1px solid #eeeeee',
+    boxShadow: '0px 2px 6px 0px rgb(0 0 0 / 5%)',
     color: '#979797',
     width: '100%',
     padding: '0.5rem 1rem',
