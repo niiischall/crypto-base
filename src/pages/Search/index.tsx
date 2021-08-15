@@ -23,13 +23,14 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
   },
   searchHeading: {
+    color: '#979797',
     display: 'flex',
-    fontSize: 14,
+    fontSize: 15,
     fontWeight: 700,
   },
   trendingCoin: {
     backgroundColor: 'white',
-    width: 150,
+    width: '47.5%',
     height: 200,
     marginBottom: 15,
     boxShadow: '0px 2px 9px 0px rgb(0 0 0 / 2%)',

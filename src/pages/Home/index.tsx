@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import { Button } from '@material-ui/core';
 import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
@@ -10,6 +11,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import { HomeBackground } from '../../components/Icons';
 import Popular from './Popular';
 import Following from './Following';
+import { getCoinsInfo } from '../../store/actions/actions';
 
 const useStyles = makeStyles((theme) => ({
   homeContainer: {
@@ -94,9 +96,9 @@ const StyledTab = withStyles((theme) => ({
     textTransform: 'none',
     color: '#323232',
     fontSize: 14,
-    fontWeight: 400,
+    fontWeight: 300,
     '&:focus': {
-      fontWeight: 600,
+      fontWeight: 400,
     },
   },
   wrapper: {
@@ -106,8 +108,17 @@ const StyledTab = withStyles((theme) => ({
 }))((props: any) => <Tab disableRipple {...props} />);
 
 export const Home: React.FC<{}> = (props) => {
-  const [currentTab, setCurrentTab] = useState<number>(0);
   const classes = useStyles();
+  const dispatch = useDispatch();
+
+  const latestCoins = useSelector((state: any) => state.coins);
+  const [currentTab, setCurrentTab] = useState<number>(0);
+
+  useEffect(() => {
+    if (latestCoins.length > 0) {
+      dispatch(getCoinsInfo(latestCoins));
+    }
+  }, [dispatch, latestCoins]);
 
   const navigateToLearnMore = () => {
     chrome.tabs.create({ url: 'http://www.google.com', active: true });
@@ -150,7 +161,7 @@ export const Home: React.FC<{}> = (props) => {
           />
         </StyledTabs>
       </div>
-      {currentTab === 0 && <Popular data={[]} />}
+      {currentTab === 0 && <Popular />}
       {currentTab === 1 && <Following />}
     </div>
   );
