@@ -5,7 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import Header from './components/Header';
 import Layout from './pages/Layout';
 import Navigation from './components/Navigation';
-import { getLatestListings } from './store/actions/actions';
+
+import { getPopularCoins } from './store/actions/actionHome';
+import { getTrendingCoins } from './store/actions/actionSearch';
 
 export interface Props {}
 
@@ -24,7 +26,8 @@ export const App: React.FC<Props> = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  const latestListings = useSelector((store: any) => store.latestListings);
+  const popularCoins = useSelector((store: any) => store.home.popularCoins);
+
   const [value, setValue] = useState<string>('home');
 
   const handleChange = (event: any, newValue: string) => {
@@ -32,10 +35,9 @@ export const App: React.FC<Props> = () => {
   };
 
   useEffect(() => {
-    if (latestListings.length === 0) {
-      dispatch(getLatestListings());
-    }
-  }, [dispatch, latestListings]);
+    dispatch(getPopularCoins());
+    dispatch(getTrendingCoins());
+  }, []);
 
   return (
     <div className={classes.appContainer}>

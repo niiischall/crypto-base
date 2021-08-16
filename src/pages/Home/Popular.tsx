@@ -75,8 +75,10 @@ const useStyles = makeStyles((theme) => ({
 export const Popular: React.FC<Props> = () => {
   const classes = useStyles();
 
-  const coins = useSelector((state: any) => state.homePageCoins);
-  const latestListings = useSelector((state: any) => state.latestListings);
+  const coinsDetails = useSelector(
+    (state: any) => state.home.popularCoinsDetails,
+  );
+  const coins = useSelector((state: any) => state.home.popularCoins);
 
   const renderPriceChange = (change: any) => {
     const isPositive = change > 0;
@@ -97,10 +99,11 @@ export const Popular: React.FC<Props> = () => {
 
   return (
     <div className={classes.listingsContainer}>
-      {latestListings.length > 0 &&
+      {coins.length > 0 &&
+        coinsDetails &&
         Object.keys(coins).length > 0 &&
-        latestListings.map((listing: any) => {
-          const logo = coins[listing.id].logo;
+        coins.map((listing: any) => {
+          const logo = coinsDetails[listing.id].logo;
           return (
             <div className={classes.listing} key={listing.id}>
               <img

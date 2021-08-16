@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "dbb830e9ef6f9c3a758f";
+/******/ 	var hotCurrentHash = "20d032499fd66746a5b2";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -97480,10 +97480,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Header */ "./src/components/Header/index.tsx");
 /* harmony import */ var _pages_Layout__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pages/Layout */ "./src/pages/Layout/index.tsx");
 /* harmony import */ var _components_Navigation__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/Navigation */ "./src/components/Navigation/index.tsx");
-/* harmony import */ var _store_actions_actions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./store/actions/actions */ "./src/store/actions/actions.ts");
-/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-dev-runtime */ "./node_modules/react/jsx-dev-runtime.js");
-/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _store_actions_actionHome__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./store/actions/actionHome */ "./src/store/actions/actionHome.ts");
+/* harmony import */ var _store_actions_actionSearch__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./store/actions/actionSearch */ "./src/store/actions/actionSearch.ts");
+/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-dev-runtime */ "./node_modules/react/jsx-dev-runtime.js");
+/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_8__);
 var _jsxFileName = "/Users/geekyants/Desktop/Hackathon-21/crypto-base/src/App.tsx";
+
 
 
 
@@ -97505,7 +97507,7 @@ const useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["
 const App = () => {
   const classes = useStyles();
   const dispatch = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["useDispatch"])();
-  const latestListings = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["useSelector"])(store => store.latestListings);
+  const popularCoins = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["useSelector"])(store => store.home.popularCoins);
   const [value, setValue] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('home');
 
   const handleChange = (event, newValue) => {
@@ -97513,35 +97515,34 @@ const App = () => {
   };
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
-    if (latestListings.length === 0) {
-      dispatch(Object(_store_actions_actions__WEBPACK_IMPORTED_MODULE_6__["getLatestListings"])());
-    }
-  }, [dispatch, latestListings]);
-  return /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_7__["jsxDEV"])("div", {
+    dispatch(Object(_store_actions_actionHome__WEBPACK_IMPORTED_MODULE_6__["getPopularCoins"])());
+    dispatch(Object(_store_actions_actionSearch__WEBPACK_IMPORTED_MODULE_7__["getTrendingCoins"])());
+  }, []);
+  return /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_8__["jsxDEV"])("div", {
     className: classes.appContainer,
-    children: [/*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_7__["jsxDEV"])(_components_Header__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    children: [/*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_8__["jsxDEV"])(_components_Header__WEBPACK_IMPORTED_MODULE_3__["default"], {
       currentPage: value
-    }, void 0, false, {
-      fileName: _jsxFileName,
-      lineNumber: 42,
-      columnNumber: 7
-    }, undefined), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_7__["jsxDEV"])(_pages_Layout__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      currentPage: value
-    }, void 0, false, {
-      fileName: _jsxFileName,
-      lineNumber: 43,
-      columnNumber: 7
-    }, undefined), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_7__["jsxDEV"])(_components_Navigation__WEBPACK_IMPORTED_MODULE_5__["default"], {
-      currentPage: value,
-      switchPage: handleChange
     }, void 0, false, {
       fileName: _jsxFileName,
       lineNumber: 44,
       columnNumber: 7
+    }, undefined), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_8__["jsxDEV"])(_pages_Layout__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      currentPage: value
+    }, void 0, false, {
+      fileName: _jsxFileName,
+      lineNumber: 45,
+      columnNumber: 7
+    }, undefined), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_8__["jsxDEV"])(_components_Navigation__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      currentPage: value,
+      switchPage: handleChange
+    }, void 0, false, {
+      fileName: _jsxFileName,
+      lineNumber: 46,
+      columnNumber: 7
     }, undefined)]
   }, void 0, true, {
     fileName: _jsxFileName,
-    lineNumber: 41,
+    lineNumber: 43,
     columnNumber: 5
   }, undefined);
 };
@@ -98546,8 +98547,8 @@ const useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_2__["
 }));
 const Popular = () => {
   const classes = useStyles();
-  const coins = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["useSelector"])(state => state.homePageCoins);
-  const latestListings = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["useSelector"])(state => state.latestListings);
+  const coinsDetails = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["useSelector"])(state => state.home.popularCoinsDetails);
+  const coins = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["useSelector"])(state => state.home.popularCoins);
 
   const renderPriceChange = change => {
     const isPositive = change > 0;
@@ -98562,27 +98563,27 @@ const Popular = () => {
         children: ["\u2191", absoluteChange, "%"]
       }, void 0, true, {
         fileName: _jsxFileName,
-        lineNumber: 90,
+        lineNumber: 92,
         columnNumber: 11
       }, undefined) : /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_6__["jsxDEV"])("span", {
         className: classes.change,
         children: ["\u2193", absoluteChange, "%"]
       }, void 0, true, {
         fileName: _jsxFileName,
-        lineNumber: 92,
+        lineNumber: 94,
         columnNumber: 11
       }, undefined)
     }, void 0, false, {
       fileName: _jsxFileName,
-      lineNumber: 85,
+      lineNumber: 87,
       columnNumber: 7
     }, undefined);
   };
 
   return /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_6__["jsxDEV"])("div", {
     className: classes.listingsContainer,
-    children: latestListings.length > 0 && Object.keys(coins).length > 0 && latestListings.map(listing => {
-      const logo = coins[listing.id].logo;
+    children: coins.length > 0 && coinsDetails && Object.keys(coins).length > 0 && coins.map(listing => {
+      const logo = coinsDetails[listing.id].logo;
       return /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_6__["jsxDEV"])("div", {
         className: classes.listing,
         children: [/*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_6__["jsxDEV"])("img", {
@@ -98591,7 +98592,7 @@ const Popular = () => {
           className: classes.image
         }, void 0, false, {
           fileName: _jsxFileName,
-          lineNumber: 106,
+          lineNumber: 109,
           columnNumber: 15
         }, undefined), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_6__["jsxDEV"])("div", {
           className: classes.textBox,
@@ -98600,26 +98601,26 @@ const Popular = () => {
             children: listing.name
           }, void 0, false, {
             fileName: _jsxFileName,
-            lineNumber: 112,
+            lineNumber: 115,
             columnNumber: 17
           }, undefined), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_6__["jsxDEV"])("span", {
             className: classes.symbol,
             children: listing.symbol
           }, void 0, false, {
             fileName: _jsxFileName,
-            lineNumber: 113,
+            lineNumber: 116,
             columnNumber: 17
           }, undefined), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_6__["jsxDEV"])("span", {
             className: classes.price,
             children: ["$", Object(_services_helpers__WEBPACK_IMPORTED_MODULE_5__["normalizePrice"])(listing.quote.USD.price), " |", renderPriceChange(listing.quote.USD.percent_change_24h.toFixed(2))]
           }, void 0, true, {
             fileName: _jsxFileName,
-            lineNumber: 114,
+            lineNumber: 117,
             columnNumber: 17
           }, undefined)]
         }, void 0, true, {
           fileName: _jsxFileName,
-          lineNumber: 111,
+          lineNumber: 114,
           columnNumber: 15
         }, undefined), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_6__["jsxDEV"])(_material_ui_core__WEBPACK_IMPORTED_MODULE_3__["IconButton"], {
           className: classes.iconButton,
@@ -98629,23 +98630,23 @@ const Popular = () => {
             className: classes.icon
           }, void 0, false, {
             fileName: _jsxFileName,
-            lineNumber: 126,
+            lineNumber: 129,
             columnNumber: 17
           }, undefined)
         }, void 0, false, {
           fileName: _jsxFileName,
-          lineNumber: 121,
+          lineNumber: 124,
           columnNumber: 15
         }, undefined)]
       }, listing.id, true, {
         fileName: _jsxFileName,
-        lineNumber: 105,
+        lineNumber: 108,
         columnNumber: 13
       }, undefined);
     })
   }, void 0, false, {
     fileName: _jsxFileName,
-    lineNumber: 99,
+    lineNumber: 101,
     columnNumber: 5
   }, undefined);
 };
@@ -98679,7 +98680,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Icons__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/Icons */ "./src/components/Icons/index.tsx");
 /* harmony import */ var _Popular__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Popular */ "./src/pages/Home/Popular.tsx");
 /* harmony import */ var _Following__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Following */ "./src/pages/Home/Following.tsx");
-/* harmony import */ var _store_actions_actions__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../store/actions/actions */ "./src/store/actions/actions.ts");
+/* harmony import */ var _store_actions_actionHome__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../store/actions/actionHome */ "./src/store/actions/actionHome.ts");
 /* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react/jsx-dev-runtime */ "./node_modules/react/jsx-dev-runtime.js");
 /* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_13__);
 var _jsxFileName = "/Users/geekyants/Desktop/Hackathon-21/crypto-base/src/pages/Home/index.tsx";
@@ -98814,13 +98815,14 @@ const StyledTab = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_2__["
 const Home = props => {
   const classes = useStyles();
   const dispatch = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["useDispatch"])();
-  const latestCoins = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["useSelector"])(state => state.coins);
+  const popularCoins = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["useSelector"])(state => state.home.popularCoins);
+  const popularCoinsDetails = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["useSelector"])(state => state.home.popularCoinsDetails);
   const [currentTab, setCurrentTab] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(0);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
-    if (latestCoins.length > 0) {
-      dispatch(Object(_store_actions_actions__WEBPACK_IMPORTED_MODULE_12__["getCoinsInfo"])(latestCoins));
+    if (popularCoins.length > 0 && !popularCoinsDetails) {
+      dispatch(Object(_store_actions_actionHome__WEBPACK_IMPORTED_MODULE_12__["getPopularCoinsDetails"])(popularCoins));
     }
-  }, [dispatch, latestCoins]);
+  }, [dispatch, popularCoins, popularCoinsDetails]);
 
   const navigateToLearnMore = () => {
     chrome.tabs.create({
@@ -98842,7 +98844,7 @@ const Home = props => {
         height: 100
       }, void 0, false, {
         fileName: _jsxFileName,
-        lineNumber: 134,
+        lineNumber: 138,
         columnNumber: 9
       }, undefined), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_13__["jsxDEV"])("div", {
         className: classes.textBox,
@@ -98851,36 +98853,36 @@ const Home = props => {
           children: "CryptoBase"
         }, void 0, false, {
           fileName: _jsxFileName,
-          lineNumber: 136,
+          lineNumber: 140,
           columnNumber: 11
         }, undefined), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_13__["jsxDEV"])("span", {
           className: classes.text,
           children: "Personalize your crypto experience."
         }, void 0, false, {
           fileName: _jsxFileName,
-          lineNumber: 137,
+          lineNumber: 141,
           columnNumber: 11
         }, undefined), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_13__["jsxDEV"])(StyledButton, {
           onClick: navigateToLearnMore,
           endIcon: /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_13__["jsxDEV"])(_material_ui_icons_ArrowRightAlt__WEBPACK_IMPORTED_MODULE_4___default.a, {}, void 0, false, {
             fileName: _jsxFileName,
-            lineNumber: 142,
+            lineNumber: 146,
             columnNumber: 22
           }, undefined),
           children: "Learn More"
         }, void 0, false, {
           fileName: _jsxFileName,
-          lineNumber: 140,
+          lineNumber: 144,
           columnNumber: 11
         }, undefined)]
       }, void 0, true, {
         fileName: _jsxFileName,
-        lineNumber: 135,
+        lineNumber: 139,
         columnNumber: 9
       }, undefined)]
     }, void 0, true, {
       fileName: _jsxFileName,
-      lineNumber: 133,
+      lineNumber: 137,
       columnNumber: 7
     }, undefined), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_13__["jsxDEV"])("div", {
       className: classes.homeNavigation,
@@ -98893,49 +98895,49 @@ const Home = props => {
             className: classes.icon
           }, void 0, false, {
             fileName: _jsxFileName,
-            lineNumber: 155,
+            lineNumber: 159,
             columnNumber: 19
           }, undefined),
           label: "Popular"
         }, void 0, false, {
           fileName: _jsxFileName,
-          lineNumber: 154,
+          lineNumber: 158,
           columnNumber: 11
         }, undefined), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_13__["jsxDEV"])(StyledTab, {
           icon: /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_13__["jsxDEV"])(_material_ui_icons_Favorite__WEBPACK_IMPORTED_MODULE_8___default.a, {
             className: classes.icon
           }, void 0, false, {
             fileName: _jsxFileName,
-            lineNumber: 159,
+            lineNumber: 163,
             columnNumber: 19
           }, undefined),
           label: "Following"
         }, void 0, false, {
           fileName: _jsxFileName,
-          lineNumber: 158,
+          lineNumber: 162,
           columnNumber: 11
         }, undefined)]
       }, void 0, true, {
         fileName: _jsxFileName,
-        lineNumber: 149,
+        lineNumber: 153,
         columnNumber: 9
       }, undefined)
     }, void 0, false, {
       fileName: _jsxFileName,
-      lineNumber: 148,
+      lineNumber: 152,
       columnNumber: 7
     }, undefined), currentTab === 0 && /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_13__["jsxDEV"])(_Popular__WEBPACK_IMPORTED_MODULE_10__["default"], {}, void 0, false, {
       fileName: _jsxFileName,
-      lineNumber: 164,
+      lineNumber: 168,
       columnNumber: 28
     }, undefined), currentTab === 1 && /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_13__["jsxDEV"])(_Following__WEBPACK_IMPORTED_MODULE_11__["default"], {}, void 0, false, {
       fileName: _jsxFileName,
-      lineNumber: 165,
+      lineNumber: 169,
       columnNumber: 28
     }, undefined)]
   }, void 0, true, {
     fileName: _jsxFileName,
-    lineNumber: 132,
+    lineNumber: 136,
     columnNumber: 5
   }, undefined);
 };
@@ -99051,14 +99053,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Search", function() { return Search; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material-ui/core/styles */ "./node_modules/@material-ui/core/esm/styles/index.js");
-/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-dev-runtime */ "./node_modules/react/jsx-dev-runtime.js");
-/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/core/styles */ "./node_modules/@material-ui/core/esm/styles/index.js");
+/* harmony import */ var _store_actions_actionSearch__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../store/actions/actionSearch */ "./src/store/actions/actionSearch.ts");
+/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-dev-runtime */ "./node_modules/react/jsx-dev-runtime.js");
+/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_4__);
 var _jsxFileName = "/Users/geekyants/Desktop/Hackathon-21/crypto-base/src/pages/Search/index.tsx";
 
 
 
-const useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["makeStyles"])(theme => ({
+
+
+
+const useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_2__["makeStyles"])(theme => ({
   searchContainer: {
     flex: 1,
     height: '100%',
@@ -99090,48 +99097,94 @@ const useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["
     width: '47.5%',
     height: 200,
     marginBottom: 15,
+    padding: 10,
     boxShadow: '0px 2px 9px 0px rgb(0 0 0 / 2%)',
-    borderRadius: '3px'
+    borderRadius: '3px',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'center'
+  },
+  coin: {
+    width: 50,
+    height: 50,
+    border: '2px solid #979797',
+    borderRadius: '50%'
+  },
+  textBox: {
+    margin: '5px 0px',
+    textAlign: 'center'
+  },
+  name: {
+    fontSize: 14,
+    fontWeight: 600,
+    marginBottom: 5
   }
 }));
 const Search = props => {
   const classes = useStyles();
-  const data = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
-  return /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__["jsxDEV"])("div", {
+  const dispatch = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["useDispatch"])();
+  const trendingCoins = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["useSelector"])(state => state.search.trendingCoins);
+  const coinsDetails = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["useSelector"])(state => state.search.coinsDetails);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    if (trendingCoins.length > 0 && !coinsDetails) {
+      dispatch(Object(_store_actions_actionSearch__WEBPACK_IMPORTED_MODULE_3__["getTrendingCoinsDetails"])(trendingCoins));
+    }
+  }, []);
+  return /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_4__["jsxDEV"])("div", {
     className: classes.searchContainer,
-    children: [/*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__["jsxDEV"])("div", {
-      className: classes.searchHeader,
-      children: /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__["jsxDEV"])("span", {
-        className: classes.searchHeading,
-        children: "Trending Now"
-      }, void 0, false, {
-        fileName: _jsxFileName,
-        lineNumber: 49,
-        columnNumber: 9
-      }, undefined)
-    }, void 0, false, {
-      fileName: _jsxFileName,
-      lineNumber: 48,
-      columnNumber: 7
-    }, undefined), data.map((item, key) => {
-      return /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__["jsxDEV"])("div", {
-        className: classes.trendingCoin,
-        children: /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__["jsxDEV"])("span", {
-          children: "\xA0"
+    children: trendingCoins.length > 0 && coinsDetails && Object.keys(trendingCoins).length > 0 && /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_4__["jsxDEV"])(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_4__["Fragment"], {
+      children: [/*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_4__["jsxDEV"])("div", {
+        className: classes.searchHeader,
+        children: /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_4__["jsxDEV"])("span", {
+          className: classes.searchHeading,
+          children: "Trending Now"
         }, void 0, false, {
           fileName: _jsxFileName,
-          lineNumber: 54,
-          columnNumber: 13
+          lineNumber: 84,
+          columnNumber: 15
         }, undefined)
       }, void 0, false, {
         fileName: _jsxFileName,
-        lineNumber: 53,
-        columnNumber: 11
-      }, undefined);
-    })]
-  }, void 0, true, {
+        lineNumber: 83,
+        columnNumber: 13
+      }, undefined), trendingCoins.map(coin => {
+        const logo = coinsDetails[coin.id].logo;
+        return /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_4__["jsxDEV"])("div", {
+          className: classes.trendingCoin,
+          children: [/*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_4__["jsxDEV"])("img", {
+            className: classes.coin,
+            src: logo,
+            alt: `${coin.slug}-logo`
+          }, void 0, false, {
+            fileName: _jsxFileName,
+            lineNumber: 90,
+            columnNumber: 19
+          }, undefined), /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_4__["jsxDEV"])("div", {
+            className: classes.textBox,
+            children: /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_4__["jsxDEV"])("span", {
+              className: classes.name,
+              children: coin.name
+            }, void 0, false, {
+              fileName: _jsxFileName,
+              lineNumber: 96,
+              columnNumber: 21
+            }, undefined)
+          }, void 0, false, {
+            fileName: _jsxFileName,
+            lineNumber: 95,
+            columnNumber: 19
+          }, undefined)]
+        }, coin.id, true, {
+          fileName: _jsxFileName,
+          lineNumber: 89,
+          columnNumber: 17
+        }, undefined);
+      })]
+    }, void 0, true)
+  }, void 0, false, {
     fileName: _jsxFileName,
-    lineNumber: 47,
+    lineNumber: 78,
     columnNumber: 5
   }, undefined);
 };
@@ -99154,8 +99207,9 @@ const baseAPI = 'https://pro-api.coinmarketcap.com/';
 const apiVersion = 'v1';
 const apiKey = `&CMC_PRO_API_KEY=${"3b3805da-f1c9-49e0-b771-1dbc44005362"}`;
 const apiEndPoints = {
-  latestListing: '/cryptocurrency/listings/latest?limit=25',
-  listingInfo: '/cryptocurrency/info?slug='
+  popularCoins: '/cryptocurrency/listings/latest?limit=25',
+  trendingCoins: '/cryptocurrency/listings/latest?sort=percent_change_1h&limit=25',
+  coinsInfo: '/cryptocurrency/info?slug='
 };
 async function fetchApi(endPoint, payload, method = 'get', headers) {
   let path = `${baseAPI}${apiVersion}${endPoint}${apiKey}`;
@@ -99221,109 +99275,267 @@ function normalizePrice(value, precision = 0) {
 
 /***/ }),
 
-/***/ "./src/store/actions/actionTypes.ts":
-/*!******************************************!*\
-  !*** ./src/store/actions/actionTypes.ts ***!
-  \******************************************/
-/*! exports provided: FETCH_LATEST_LISTINGS, FETCH_LATEST_LISTINGS_SUCCESS, FETCH_LATEST_LISTINGS_FAILURE, FETCH_COINS_INFO, FETCH_COINS_INFO_SUCCESS, FETCH_COINS_INFO_FAILURE */
+/***/ "./src/store/actions/actionHome.ts":
+/*!*****************************************!*\
+  !*** ./src/store/actions/actionHome.ts ***!
+  \*****************************************/
+/*! exports provided: getPopularCoins, getPopularCoinsDetails */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_LATEST_LISTINGS", function() { return FETCH_LATEST_LISTINGS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_LATEST_LISTINGS_SUCCESS", function() { return FETCH_LATEST_LISTINGS_SUCCESS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_LATEST_LISTINGS_FAILURE", function() { return FETCH_LATEST_LISTINGS_FAILURE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_COINS_INFO", function() { return FETCH_COINS_INFO; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_COINS_INFO_SUCCESS", function() { return FETCH_COINS_INFO_SUCCESS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_COINS_INFO_FAILURE", function() { return FETCH_COINS_INFO_FAILURE; });
-const FETCH_LATEST_LISTINGS = 'FETCH_LATEST_LISTINGS';
-const FETCH_LATEST_LISTINGS_SUCCESS = 'FETCH_LATEST_LISTINGS_SUCCESS';
-const FETCH_LATEST_LISTINGS_FAILURE = 'FETCH_LATEST_LISTINGS_FAILURE';
-const FETCH_COINS_INFO = 'FETCH_COINS_INFO';
-const FETCH_COINS_INFO_SUCCESS = 'FETCH_COINS_INFO_SUCCESS';
-const FETCH_COINS_INFO_FAILURE = 'FETCH_COINS_INFO_FAILURE';
-
-/***/ }),
-
-/***/ "./src/store/actions/actions.ts":
-/*!**************************************!*\
-  !*** ./src/store/actions/actions.ts ***!
-  \**************************************/
-/*! exports provided: getLatestListings, getCoinsInfo */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getLatestListings", function() { return getLatestListings; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCoinsInfo", function() { return getCoinsInfo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getPopularCoins", function() { return getPopularCoins; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getPopularCoinsDetails", function() { return getPopularCoinsDetails; });
 /* harmony import */ var _actionTypes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./actionTypes */ "./src/store/actions/actionTypes.ts");
 /* harmony import */ var _services_api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/api */ "./src/services/api.ts");
 
 
 
-const getLatestListingsSuccess = listings => {
+const getPopularCoinsSuccess = coins => {
   return {
-    type: _actionTypes__WEBPACK_IMPORTED_MODULE_0__["FETCH_LATEST_LISTINGS_SUCCESS"],
-    listings
+    type: _actionTypes__WEBPACK_IMPORTED_MODULE_0__["FETCH_POPULAR_COINS_SUCCESS"],
+    coins
   };
 };
 
-const getLatestListingsFailure = error => {
+const getPopularCoinsFailure = error => {
   return {
-    type: _actionTypes__WEBPACK_IMPORTED_MODULE_0__["FETCH_LATEST_LISTINGS_FAILURE"],
+    type: _actionTypes__WEBPACK_IMPORTED_MODULE_0__["FETCH_POPULAR_COINS_FAILURE"],
     error
   };
 };
 
-const getLatestListings = () => {
+const getPopularCoins = () => {
   return async dispatch => {
     try {
-      const response = await Object(_services_api__WEBPACK_IMPORTED_MODULE_1__["fetchApi"])(_services_api__WEBPACK_IMPORTED_MODULE_1__["apiEndPoints"].latestListing);
+      const response = await Object(_services_api__WEBPACK_IMPORTED_MODULE_1__["fetchApi"])(_services_api__WEBPACK_IMPORTED_MODULE_1__["apiEndPoints"].popularCoins);
 
       if (response.ok) {
         const json = await response.json();
-        dispatch(getLatestListingsSuccess(json.data));
+        dispatch(getPopularCoinsSuccess(json.data));
       } else {
-        dispatch(getLatestListingsFailure('Unable to fetch latest cryptocurrency market listings.'));
+        dispatch(getPopularCoinsFailure('Unable to fetch popular cryptocurrency.'));
       }
     } catch (error) {
-      dispatch(getLatestListingsFailure('Unable to fetch latest cryptocurrency market listings.'));
+      dispatch(getPopularCoinsFailure('Unable to fetch popular cryptocurrency.'));
     }
   };
 };
 
-const getCoinsInfoSuccess = coinsInfo => {
+const getPopularCoinsDetailsSuccess = coinsInfo => {
   return {
-    type: _actionTypes__WEBPACK_IMPORTED_MODULE_0__["FETCH_COINS_INFO_SUCCESS"],
+    type: _actionTypes__WEBPACK_IMPORTED_MODULE_0__["FETCH_POPULAR_COINS_DETAILS_SUCCESS"],
     coinsInfo
   };
 };
 
-const getCoinsInfoFailure = error => {
+const getPopularCoinsDetailsFailure = error => {
   return {
-    type: _actionTypes__WEBPACK_IMPORTED_MODULE_0__["FETCH_COINS_INFO_FAILURE"],
+    type: _actionTypes__WEBPACK_IMPORTED_MODULE_0__["FETCH_POPULAR_COINS_DETAILS_FAILURE"],
     error
   };
 };
 
-const getCoinsInfo = coins => {
+const getPopularCoinsDetails = coins => {
   return async dispatch => {
-    const requestURL = `${_services_api__WEBPACK_IMPORTED_MODULE_1__["apiEndPoints"].listingInfo}${coins.join(',')}`;
+    const data = coins.map(coin => coin.slug);
+    const requestURL = `${_services_api__WEBPACK_IMPORTED_MODULE_1__["apiEndPoints"].coinsInfo}${data.join(',')}`;
 
     try {
       const response = await Object(_services_api__WEBPACK_IMPORTED_MODULE_1__["fetchApi"])(requestURL);
 
       if (response.ok) {
         const json = await response.json();
-        dispatch(getCoinsInfoSuccess(json.data));
+        dispatch(getPopularCoinsDetailsSuccess(json.data));
       } else {
-        dispatch(getCoinsInfoFailure('Unable to fetch respective coin info.'));
+        dispatch(getPopularCoinsDetailsSuccess('Unable to fetch popular coins details.'));
       }
     } catch (error) {
-      dispatch(getCoinsInfoFailure('Unable to fetch respective coin info.'));
+      dispatch(getPopularCoinsDetailsFailure('Unable to fetch popular coins details.'));
     }
   };
 };
+
+/***/ }),
+
+/***/ "./src/store/actions/actionSearch.ts":
+/*!*******************************************!*\
+  !*** ./src/store/actions/actionSearch.ts ***!
+  \*******************************************/
+/*! exports provided: getTrendingCoins, getTrendingCoinsDetails */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getTrendingCoins", function() { return getTrendingCoins; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getTrendingCoinsDetails", function() { return getTrendingCoinsDetails; });
+/* harmony import */ var _actionTypes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./actionTypes */ "./src/store/actions/actionTypes.ts");
+/* harmony import */ var _services_api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/api */ "./src/services/api.ts");
+
+
+
+const getTrendingCoinsSuccess = coins => {
+  return {
+    type: _actionTypes__WEBPACK_IMPORTED_MODULE_0__["FETCH_TRENDING_COINS_SUCCESS"],
+    coins
+  };
+};
+
+const getTrendingCoinsFailure = error => {
+  return {
+    type: _actionTypes__WEBPACK_IMPORTED_MODULE_0__["FETCH_TRENDING_COINS_FAILURE"],
+    error
+  };
+};
+
+const getTrendingCoins = () => {
+  return async dispatch => {
+    try {
+      const response = await Object(_services_api__WEBPACK_IMPORTED_MODULE_1__["fetchApi"])(_services_api__WEBPACK_IMPORTED_MODULE_1__["apiEndPoints"].trendingCoins);
+
+      if (response.ok) {
+        const json = await response.json();
+        dispatch(getTrendingCoinsSuccess(json.data));
+      } else {
+        dispatch(getTrendingCoinsFailure('Unable to fetch trending cryptocurrency.'));
+      }
+    } catch (error) {
+      dispatch(getTrendingCoinsFailure('Unable to fetch trending cryptocurrency.'));
+    }
+  };
+};
+
+const getTrendingCoinsDetailsSuccess = coinsInfo => {
+  return {
+    type: _actionTypes__WEBPACK_IMPORTED_MODULE_0__["FETCH_TRENDING_COINS_DETAILS_SUCCESS"],
+    coinsInfo
+  };
+};
+
+const getTrendingCoinsDetailsFailure = error => {
+  return {
+    type: _actionTypes__WEBPACK_IMPORTED_MODULE_0__["FETCH_TRENDING_COINS_DETAILS_FAILURE"],
+    error
+  };
+};
+
+const getTrendingCoinsDetails = coins => {
+  return async dispatch => {
+    const data = coins.map(coin => coin.slug);
+    const requestURL = `${_services_api__WEBPACK_IMPORTED_MODULE_1__["apiEndPoints"].coinsInfo}${data.join(',')}`;
+
+    try {
+      const response = await Object(_services_api__WEBPACK_IMPORTED_MODULE_1__["fetchApi"])(requestURL);
+
+      if (response.ok) {
+        const json = await response.json();
+        dispatch(getTrendingCoinsDetailsSuccess(json.data));
+      } else {
+        dispatch(getTrendingCoinsDetailsSuccess('Unable to fetch trending coins details.'));
+      }
+    } catch (error) {
+      dispatch(getTrendingCoinsDetailsFailure('Unable to fetch trending coins details.'));
+    }
+  };
+};
+
+/***/ }),
+
+/***/ "./src/store/actions/actionTypes.ts":
+/*!******************************************!*\
+  !*** ./src/store/actions/actionTypes.ts ***!
+  \******************************************/
+/*! exports provided: FETCH_POPULAR_COINS, FETCH_POPULAR_COINS_SUCCESS, FETCH_POPULAR_COINS_FAILURE, FETCH_POPULAR_COINS_DETAILS, FETCH_POPULAR_COINS_DETAILS_SUCCESS, FETCH_POPULAR_COINS_DETAILS_FAILURE, FETCH_TRENDING_COINS, FETCH_TRENDING_COINS_SUCCESS, FETCH_TRENDING_COINS_FAILURE, FETCH_TRENDING_COINS_DETAILS, FETCH_TRENDING_COINS_DETAILS_SUCCESS, FETCH_TRENDING_COINS_DETAILS_FAILURE */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_POPULAR_COINS", function() { return FETCH_POPULAR_COINS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_POPULAR_COINS_SUCCESS", function() { return FETCH_POPULAR_COINS_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_POPULAR_COINS_FAILURE", function() { return FETCH_POPULAR_COINS_FAILURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_POPULAR_COINS_DETAILS", function() { return FETCH_POPULAR_COINS_DETAILS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_POPULAR_COINS_DETAILS_SUCCESS", function() { return FETCH_POPULAR_COINS_DETAILS_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_POPULAR_COINS_DETAILS_FAILURE", function() { return FETCH_POPULAR_COINS_DETAILS_FAILURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_TRENDING_COINS", function() { return FETCH_TRENDING_COINS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_TRENDING_COINS_SUCCESS", function() { return FETCH_TRENDING_COINS_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_TRENDING_COINS_FAILURE", function() { return FETCH_TRENDING_COINS_FAILURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_TRENDING_COINS_DETAILS", function() { return FETCH_TRENDING_COINS_DETAILS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_TRENDING_COINS_DETAILS_SUCCESS", function() { return FETCH_TRENDING_COINS_DETAILS_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_TRENDING_COINS_DETAILS_FAILURE", function() { return FETCH_TRENDING_COINS_DETAILS_FAILURE; });
+const FETCH_POPULAR_COINS = 'FETCH_POPULAR_COINS';
+const FETCH_POPULAR_COINS_SUCCESS = 'FETCH_POPULAR_COINS_SUCCESS';
+const FETCH_POPULAR_COINS_FAILURE = 'FETCH_POPULAR_COINS_FAILURE';
+const FETCH_POPULAR_COINS_DETAILS = 'FETCH_POPULAR_COINS_DETAILS';
+const FETCH_POPULAR_COINS_DETAILS_SUCCESS = 'FETCH_POPULAR_COINS_DETAILS_SUCCESS';
+const FETCH_POPULAR_COINS_DETAILS_FAILURE = 'FETCH_POPULAR_COINS_DETAILS_FAILURE';
+const FETCH_TRENDING_COINS = 'FETCH_TRENDING_COINS';
+const FETCH_TRENDING_COINS_SUCCESS = 'FETCH_TRENDING_COINS_SUCCESS';
+const FETCH_TRENDING_COINS_FAILURE = 'FETCH_TRENDING_COINS_FAILURE ';
+const FETCH_TRENDING_COINS_DETAILS = 'FETCH_TRENDING_COINS_DETAILS';
+const FETCH_TRENDING_COINS_DETAILS_SUCCESS = 'FETCH_TRENDING_COINS_DETAILS_SUCCESS';
+const FETCH_TRENDING_COINS_DETAILS_FAILURE = 'FETCH_TRENDING_COINS_DETAILS_FAILURE';
+
+/***/ }),
+
+/***/ "./src/store/reducers/home.ts":
+/*!************************************!*\
+  !*** ./src/store/reducers/home.ts ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return home; });
+/* harmony import */ var _actions_actionTypes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/actionTypes */ "./src/store/actions/actionTypes.ts");
+
+const initialState = {
+  popularCoins: [],
+  popularCoinsDetails: null,
+  followingCoins: [],
+  followingCoinsDetails: null,
+  error: ''
+};
+/**
+ * State management for data related to home
+ * @param {Object} state - The current (or initial) state
+ * @param {Object} action - An incoming action
+ */
+
+function home(state = initialState, action) {
+  switch (action.type) {
+    case _actions_actionTypes__WEBPACK_IMPORTED_MODULE_0__["FETCH_POPULAR_COINS_SUCCESS"]:
+      {
+        return Object.assign({}, state, {
+          popularCoins: action.coins
+        });
+      }
+
+    case _actions_actionTypes__WEBPACK_IMPORTED_MODULE_0__["FETCH_POPULAR_COINS_FAILURE"]:
+      {
+        return Object.assign({}, state, {
+          error: action.error
+        });
+      }
+
+    case _actions_actionTypes__WEBPACK_IMPORTED_MODULE_0__["FETCH_POPULAR_COINS_DETAILS_SUCCESS"]:
+      {
+        return Object.assign({}, state, {
+          popularCoinsDetails: action.coinsInfo
+        });
+      }
+
+    case _actions_actionTypes__WEBPACK_IMPORTED_MODULE_0__["FETCH_POPULAR_COINS_DETAILS_FAILURE"]:
+      {
+        return Object.assign({}, state, {
+          error: action.error
+        });
+      }
+
+    default:
+      return state;
+  }
+}
 
 /***/ }),
 
@@ -99336,40 +99548,91 @@ const getCoinsInfo = coins => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return reducer; });
-/* harmony import */ var _actions_actionTypes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/actionTypes */ "./src/store/actions/actionTypes.ts");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var _home__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./home */ "./src/store/reducers/home.ts");
+/* harmony import */ var _search__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./search */ "./src/store/reducers/search.ts");
+/* harmony import */ var _profile__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./profile */ "./src/store/reducers/profile.ts");
 
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
+  home: _home__WEBPACK_IMPORTED_MODULE_1__["default"],
+  search: _search__WEBPACK_IMPORTED_MODULE_2__["default"],
+  profile: _profile__WEBPACK_IMPORTED_MODULE_3__["default"]
+}));
+
+/***/ }),
+
+/***/ "./src/store/reducers/profile.ts":
+/*!***************************************!*\
+  !*** ./src/store/reducers/profile.ts ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return profile; });
 const initialState = {
-  coins: [],
-  homePageCoins: {},
-  latestListings: [],
   error: ''
 };
 /**
- * State management for data related to careers
+ * State management for data related to profile
  * @param {Object} state - The current (or initial) state
  * @param {Object} action - An incoming action
  */
 
-function reducer(state = initialState, action) {
+function profile(state = initialState, action) {
   switch (action.type) {
-    case _actions_actionTypes__WEBPACK_IMPORTED_MODULE_0__["FETCH_LATEST_LISTINGS_SUCCESS"]:
+    default:
+      return state;
+  }
+}
+
+/***/ }),
+
+/***/ "./src/store/reducers/search.ts":
+/*!**************************************!*\
+  !*** ./src/store/reducers/search.ts ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return search; });
+/* harmony import */ var _actions_actionTypes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/actionTypes */ "./src/store/actions/actionTypes.ts");
+
+const initialState = {
+  trendingCoins: [],
+  coinsDetails: null,
+  error: ''
+};
+/**
+ * State management for data related to search
+ * @param {Object} state - The current (or initial) state
+ * @param {Object} action - An incoming action
+ */
+
+function search(state = initialState, action) {
+  switch (action.type) {
+    case _actions_actionTypes__WEBPACK_IMPORTED_MODULE_0__["FETCH_TRENDING_COINS_SUCCESS"]:
       return Object.assign({}, state, {
-        latestListings: action.listings,
-        coins: action.listings.map(coin => coin.slug)
+        trendingCoins: action.coins
       });
 
-    case _actions_actionTypes__WEBPACK_IMPORTED_MODULE_0__["FETCH_LATEST_LISTINGS_FAILURE"]:
+    case _actions_actionTypes__WEBPACK_IMPORTED_MODULE_0__["FETCH_TRENDING_COINS_FAILURE"]:
       return Object.assign({}, state, {
         error: action.error
       });
 
-    case _actions_actionTypes__WEBPACK_IMPORTED_MODULE_0__["FETCH_COINS_INFO_SUCCESS"]:
+    case _actions_actionTypes__WEBPACK_IMPORTED_MODULE_0__["FETCH_TRENDING_COINS_DETAILS_SUCCESS"]:
       return Object.assign({}, state, {
-        homePageCoins: action.coinsInfo
+        coinsDetails: action.coinsInfo
       });
 
-    case _actions_actionTypes__WEBPACK_IMPORTED_MODULE_0__["FETCH_COINS_INFO_FAILURE"]:
+    case _actions_actionTypes__WEBPACK_IMPORTED_MODULE_0__["FETCH_TRENDING_COINS_DETAILS_FAILURE"]:
       return Object.assign({}, state, {
         error: action.error
       });

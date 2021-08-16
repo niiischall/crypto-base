@@ -3,8 +3,10 @@ const apiVersion = 'v1';
 const apiKey = `&CMC_PRO_API_KEY=${process.env.REACT_APP_CMC_KEY}`;
 
 export const apiEndPoints = {
-  latestListing: '/cryptocurrency/listings/latest?limit=25',
-  listingInfo: '/cryptocurrency/info?slug=',
+  popularCoins: '/cryptocurrency/listings/latest?limit=25',
+  trendingCoins:
+    '/cryptocurrency/listings/latest?sort=percent_change_1h&limit=25',
+  coinsInfo: '/cryptocurrency/info?slug=',
 };
 
 export async function fetchApi(

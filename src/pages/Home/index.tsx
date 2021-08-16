@@ -11,7 +11,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import { HomeBackground } from '../../components/Icons';
 import Popular from './Popular';
 import Following from './Following';
-import { getCoinsInfo } from '../../store/actions/actions';
+import { getPopularCoinsDetails } from '../../store/actions/actionHome';
 
 const useStyles = makeStyles((theme) => ({
   homeContainer: {
@@ -111,14 +111,18 @@ export const Home: React.FC<{}> = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  const latestCoins = useSelector((state: any) => state.coins);
+  const popularCoins = useSelector((state: any) => state.home.popularCoins);
+  const popularCoinsDetails = useSelector(
+    (state: any) => state.home.popularCoinsDetails,
+  );
+
   const [currentTab, setCurrentTab] = useState<number>(0);
 
   useEffect(() => {
-    if (latestCoins.length > 0) {
-      dispatch(getCoinsInfo(latestCoins));
+    if (popularCoins.length > 0 && !popularCoinsDetails) {
+      dispatch(getPopularCoinsDetails(popularCoins));
     }
-  }, [dispatch, latestCoins]);
+  }, [dispatch, popularCoins, popularCoinsDetails]);
 
   const navigateToLearnMore = () => {
     chrome.tabs.create({ url: 'http://www.google.com', active: true });
