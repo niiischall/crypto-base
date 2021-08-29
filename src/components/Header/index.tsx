@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { IconButton } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 
-import LogoComponent from '../Logo/Logo';
+import LogoComponent from '../Logo';
 import SearchInput from '../SearchInput';
 import User from '../User';
 

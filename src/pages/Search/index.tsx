@@ -49,6 +49,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'center',
+    transition: 'all .2s linear',
     '&:hover': {
       backgroundColor: '#fff',
       boxShadow: '0 0 0 1px rgb(0 0 0 / 5%), 0 5px 15px rgb(0 0 0 / 15%)',
@@ -127,7 +128,7 @@ export const Search: React.FC<{}> = (props) => {
     if (trendingCoins.length > 0 && !coinsDetails) {
       dispatch(getTrendingCoinsDetails(trendingCoins));
     }
-  }, [dispatch]);
+  }, [dispatch, trendingCoins, coinsDetails]);
 
   const renderPriceChange = (change: any) => {
     const isPositive = change > 0;
