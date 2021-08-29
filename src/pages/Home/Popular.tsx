@@ -1,10 +1,11 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import { IconButton } from '@material-ui/core';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 
-import { normalizePrice } from '../../services/helpers';
+import { followCoin, unfollowCoin } from '../../store/actions/actionHome';
+import { normalizePrice, isCoinPresent } from '../../services/helpers';
 
 export interface Props {}
 
@@ -75,10 +76,18 @@ const useStyles = makeStyles((theme) => ({
 export const Popular: React.FC<Props> = () => {
   const classes = useStyles();
 
+  const dispatch = useDispatch();
+  const coins = useSelector((state: any) => state.home.popularCoins);
+  const followingCoins = useSelector((state: any) => state.home.followingCoins);
   const coinsDetails = useSelector(
     (state: any) => state.home.popularCoinsDetails,
   );
-  const coins = useSelector((state: any) => state.home.popularCoins);
+
+  const coinHandler = (coin: any) => {
+    const isCoinFollowed = isCoinPresent(coin, followingCoins);
+    if (isCoinFollowed) dispatch(unfollowCoin(coin));
+    else dispatch(followCoin(coin));
+  };
 
   const renderPriceChange = (change: any) => {
     const isPositive = change > 0;
@@ -101,7 +110,7 @@ export const Popular: React.FC<Props> = () => {
     <div className={classes.listingsContainer}>
       {coins.length > 0 &&
         coinsDetails &&
-        Object.keys(coins).length > 0 &&
+        Object.keys(coinsDetails).length > 0 &&
         coins.map((listing: any) => {
           const logo = coinsDetails[listing.id].logo;
           return (
@@ -123,10 +132,17 @@ export const Popular: React.FC<Props> = () => {
               </div>
               <IconButton
                 className={classes.iconButton}
-                onClick={() => console.log('Favorite!')}
+                onClick={() => coinHandler(listing)}
                 disableRipple
               >
-                <FavoriteIcon className={classes.icon} />
+                <FavoriteIcon
+                  style={
+                    isCoinPresent(listing, followingCoins)
+                      ? { color: '#669900' }
+                      : { color: '#979797' }
+                  }
+                  className={classes.icon}
+                />
               </IconButton>
             </div>
           );

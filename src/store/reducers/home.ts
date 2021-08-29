@@ -35,6 +35,28 @@ export default function home(state: any = initialState, action: any) {
         error: action.error,
       });
     }
+    case types.FOLLOW_COIN: {
+      return Object.assign({}, state, {
+        followingCoins: state.followingCoins.concat(action.coin),
+      });
+    }
+    case types.UNFOLLOW_COIN: {
+      return Object.assign({}, state, {
+        followingCoins: state.followingCoins.filter(
+          (coin: any) => coin.slug !== action.coin.slug,
+        ),
+      });
+    }
+    case types.FETCH_FOLLOWING_COINS_DETAILS_SUCCESS: {
+      return Object.assign({}, state, {
+        followingCoinsDetails: action.coinsInfo,
+      });
+    }
+    case types.FETCH_FOLLOWING_COINS_DETAILS_FAILURE: {
+      return Object.assign({}, state, {
+        error: action.error,
+      });
+    }
     default:
       return state;
   }

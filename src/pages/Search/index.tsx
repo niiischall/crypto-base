@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Button } from '@material-ui/core';
-import { Favorite } from '@material-ui/icons';
+import { Favorite, Check } from '@material-ui/icons';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 
+import { followCoin, unfollowCoin } from '../../store/actions/actionHome';
 import { getTrendingCoinsDetails } from '../../store/actions/actionSearch';
-import { normalizePrice } from '../../services/helpers';
+import { normalizePrice, isCoinPresent } from '../../services/helpers';
 
 const useStyles = makeStyles((theme) => ({
   searchContainer: {
@@ -94,15 +95,40 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const StyledButton = withStyles((theme) => ({
+const StyledFollowButton = withStyles((theme) => ({
+  root: {
+    color: '#fff',
+    backgroundColor: '#000',
+    width: 100,
+    borderRadius: 15,
+    transition: 'all .2s',
+    '&:hover': {
+      color: '#fff',
+      backgroundColor: '#000',
+    },
+  },
+  label: {
+    fontSize: 12,
+    textTransform: 'capitalize',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  endIcon: {
+    marginLeft: 2,
+  },
+}))(Button);
+
+const StyledUnfollowButton = withStyles((theme) => ({
   root: {
     color: '#fff',
     backgroundColor: '#669900',
     width: 100,
     borderRadius: 15,
+    transition: 'all .2s',
     '&:hover': {
       color: '#fff',
-      backgroundColor: '#ccc',
+      backgroundColor: '#669900',
     },
   },
   label: {
@@ -121,6 +147,7 @@ export const Search: React.FC<{}> = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
+  const followingCoins = useSelector((state: any) => state.home.followingCoins);
   const trendingCoins = useSelector((state: any) => state.search.trendingCoins);
   const coinsDetails = useSelector((state: any) => state.search.coinsDetails);
 
@@ -145,6 +172,12 @@ export const Search: React.FC<{}> = (props) => {
         )}
       </span>
     );
+  };
+
+  const coinHandler = (coin: any) => {
+    const isCoinFollowed = isCoinPresent(coin, followingCoins);
+    if (isCoinFollowed) dispatch(unfollowCoin(coin));
+    else dispatch(followCoin(coin));
   };
 
   return (
@@ -175,13 +208,25 @@ export const Search: React.FC<{}> = (props) => {
                       )}
                     </span>
                   </div>
-                  <StyledButton
-                    disableRipple
-                    className={classes.button}
-                    endIcon={<Favorite />}
-                  >
-                    Follow
-                  </StyledButton>
+                  {isCoinPresent(coin, followingCoins) ? (
+                    <StyledUnfollowButton
+                      disableRipple
+                      className={classes.button}
+                      onClick={() => coinHandler(coin)}
+                      endIcon={<Check />}
+                    >
+                      Following
+                    </StyledUnfollowButton>
+                  ) : (
+                    <StyledFollowButton
+                      disableRipple
+                      className={classes.button}
+                      onClick={() => coinHandler(coin)}
+                      endIcon={<Favorite />}
+                    >
+                      Follow
+                    </StyledFollowButton>
+                  )}
                 </div>
               );
             })}

@@ -37,7 +37,7 @@ export const getPopularCoins = () => {
   };
 };
 
-const getPopularCoinsDetailsSuccess = (coinsInfo: {}) => {
+const getPopularCoinsDetailsSuccess = (coinsInfo: any) => {
   return {
     type: types.FETCH_POPULAR_COINS_DETAILS_SUCCESS,
     coinsInfo,
@@ -62,7 +62,7 @@ export const getPopularCoinsDetails = (coins: any[]) => {
         dispatch(getPopularCoinsDetailsSuccess(json.data));
       } else {
         dispatch(
-          getPopularCoinsDetailsSuccess(
+          getPopularCoinsDetailsFailure(
             'Unable to fetch popular coins details.',
           ),
         );
@@ -70,6 +70,60 @@ export const getPopularCoinsDetails = (coins: any[]) => {
     } catch (error) {
       dispatch(
         getPopularCoinsDetailsFailure('Unable to fetch popular coins details.'),
+      );
+    }
+  };
+};
+
+export const followCoin = (coin: any) => {
+  return {
+    type: types.FOLLOW_COIN,
+    coin,
+  };
+};
+
+export const unfollowCoin = (coin: any) => {
+  return {
+    type: types.UNFOLLOW_COIN,
+    coin,
+  };
+};
+
+const getFollowingCoinsDetailsSuccess = (coinsInfo: any) => {
+  return {
+    type: types.FETCH_FOLLOWING_COINS_DETAILS_SUCCESS,
+    coinsInfo,
+  };
+};
+
+const getFollowingCoinsDetailsFailure = (error: string) => {
+  return {
+    type: types.FETCH_FOLLOWING_COINS_DETAILS_FAILURE,
+    error,
+  };
+};
+
+export const getFollowingCoinsDetails = (coins: any[]) => {
+  return async (dispatch: Dispatch<any>) => {
+    const data = coins.map((coin: any) => coin.slug);
+    const requestURL = `${apiEndPoints.coinsInfo}${data.join(',')}`;
+    try {
+      const response = await fetchApi(requestURL);
+      if (response.ok) {
+        const json = await response.json();
+        dispatch(getFollowingCoinsDetailsSuccess(json.data));
+      } else {
+        dispatch(
+          getFollowingCoinsDetailsFailure(
+            'Unable to fetch following coins details.',
+          ),
+        );
+      }
+    } catch (error) {
+      dispatch(
+        getFollowingCoinsDetailsFailure(
+          'Unable to fetch following coins details.',
+        ),
       );
     }
   };
