@@ -1,10 +1,14 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import { IconButton } from '@material-ui/core';
 import { NotificationsActive } from '@material-ui/icons';
 
-import { normalizePrice } from '../../services/helpers';
+import {
+  startNotifications,
+  stopNotifications,
+} from '../../store/actions/actionHome';
+import { normalizePrice, isCoinPresent } from '../../services/helpers';
 
 export interface Props {}
 
@@ -75,11 +79,24 @@ const useStyles = makeStyles((theme) => ({
 
 export const Follow: React.FC<Props> = (props) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
 
-  const coins = useSelector((state: any) => state.home.followingCoins);
+  const followingCoins = useSelector((state: any) => state.home.followingCoins);
+  const notificationCoins = useSelector(
+    (state: any) => state.home.notificationCoins,
+  );
   const coinsDetails = useSelector(
     (state: any) => state.home.followingCoinsDetails,
   );
+
+  const setNotification = (coin: any) => {
+    const isCoinNotified = isCoinPresent(coin, notificationCoins);
+    if (isCoinNotified) {
+      dispatch(stopNotifications(coin));
+    } else {
+      dispatch(startNotifications(coin));
+    }
+  };
 
   const renderPriceChange = (change: any) => {
     const isPositive = change > 0;
@@ -100,10 +117,10 @@ export const Follow: React.FC<Props> = (props) => {
 
   return (
     <div className={classes.followContainer}>
-      {coins.length > 0 &&
+      {followingCoins.length > 0 &&
         coinsDetails &&
         Object.keys(coinsDetails).length > 0 &&
-        coins.map((listing: any) => {
+        followingCoins.map((listing: any) => {
           const logo = coinsDetails[listing.id].logo;
           return (
             <div className={classes.listing} key={listing.id}>
@@ -124,10 +141,17 @@ export const Follow: React.FC<Props> = (props) => {
               </div>
               <IconButton
                 className={classes.iconButton}
-                onClick={() => console.log('Set Alert!')}
+                onClick={() => setNotification(listing)}
                 disableRipple
               >
-                <NotificationsActive className={classes.icon} />
+                <NotificationsActive
+                  style={
+                    isCoinPresent(listing, notificationCoins)
+                      ? { color: '#669900' }
+                      : { color: '#979797' }
+                  }
+                  className={classes.icon}
+                />
               </IconButton>
             </div>
           );

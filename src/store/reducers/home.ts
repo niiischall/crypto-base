@@ -5,6 +5,8 @@ const initialState = {
   popularCoinsDetails: null,
   followingCoins: [],
   followingCoinsDetails: null,
+  notificationCoins: [],
+  notificationCoinsDetails: null,
   error: '',
 };
 
@@ -55,6 +57,18 @@ export default function home(state: any = initialState, action: any) {
     case types.FETCH_FOLLOWING_COINS_DETAILS_FAILURE: {
       return Object.assign({}, state, {
         error: action.error,
+      });
+    }
+    case types.START_COIN_NOTIFICATION: {
+      return Object.assign({}, state, {
+        notificationCoins: state.notificationCoins.concat(action.coin),
+      });
+    }
+    case types.STOP_COIN_NOTIFICATION: {
+      return Object.assign({}, state, {
+        notificationCoins: state.notificationCoins.filter(
+          (coin: any) => coin.slug !== action.coin.slug,
+        ),
       });
     }
     default:

@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
 export const App: React.FC<Props> = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
+
   const [value, setValue] = useState<string>('home');
 
   const handleChange = (event: any, newValue: string) => {
@@ -32,6 +33,7 @@ export const App: React.FC<Props> = () => {
   };
 
   useEffect(() => {
+    //TODO: Merge all these actions into one.
     dispatch(getPopularCoins());
     dispatch(getTrendingCoins());
   }, [dispatch]);

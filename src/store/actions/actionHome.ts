@@ -128,3 +128,17 @@ export const getFollowingCoinsDetails = (coins: any[]) => {
     }
   };
 };
+
+export const startNotifications = (coin: string) => {
+  return {
+    type: types.START_COIN_NOTIFICATION,
+    coin,
+  };
+};
+
+export const stopNotifications = (coin: string) => {
+  return {
+    type: types.STOP_COIN_NOTIFICATION,
+    coin,
+  };
+};
