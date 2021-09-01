@@ -18,6 +18,7 @@ const getPopularCoinsFailure = (error: string) => {
 };
 
 export const getPopularCoins = () => {
+  console.log('getPopularCoins!');
   return async (dispatch: Dispatch<any>) => {
     try {
       const response = await fetchApi(apiEndPoints.popularCoins);
@@ -104,6 +105,7 @@ const getFollowingCoinsDetailsFailure = (error: string) => {
 };
 
 export const getFollowingCoinsDetails = (coins: any[]) => {
+  console.log('getFollowingCoins!');
   return async (dispatch: Dispatch<any>) => {
     const data = coins.map((coin: any) => coin.slug);
     const requestURL = `${apiEndPoints.coinsInfo}${data.join(',')}`;

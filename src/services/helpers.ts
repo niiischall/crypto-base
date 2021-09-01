@@ -1,3 +1,5 @@
+export const API_RECALL_TIMER = 10000;
+
 export function normalizePrice(value: any, precision: any = 0) {
   let toReturn = value;
   if (!value) {

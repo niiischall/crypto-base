@@ -18,6 +18,7 @@ const getTrendingCoinsFailure = (error: string) => {
 };
 
 export const getTrendingCoins = () => {
+  console.log('getTrendingCoins!');
   return async (dispatch: Dispatch<any>) => {
     try {
       const response = await fetchApi(apiEndPoints.trendingCoins);

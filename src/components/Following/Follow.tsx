@@ -81,10 +81,10 @@ export const Follow: React.FC<Props> = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  const followingCoins = useSelector((state: any) => state.home.followingCoins);
   const notificationCoins = useSelector(
     (state: any) => state.home.notificationCoins,
   );
+  const followingCoins = useSelector((state: any) => state.home.followingCoins);
   const coinsDetails = useSelector(
     (state: any) => state.home.followingCoinsDetails,
   );
@@ -147,7 +147,7 @@ export const Follow: React.FC<Props> = (props) => {
                 <NotificationsActive
                   style={
                     isCoinPresent(listing, notificationCoins)
-                      ? { color: '#669900' }
+                      ? { color: '#cc3300' }
                       : { color: '#979797' }
                   }
                   className={classes.icon}

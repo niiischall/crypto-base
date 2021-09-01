@@ -6,7 +6,6 @@ const initialState = {
   followingCoins: [],
   followingCoinsDetails: null,
   notificationCoins: [],
-  notificationCoinsDetails: null,
   error: '',
 };
 
