@@ -22,6 +22,12 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
+  button: {
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+  },
   iconButton: {
     '&:hover': {
       backgroundColor: 'transparent',
@@ -48,13 +54,15 @@ export const Header: React.FC<Props> = (props) => {
   return (
     <header className={classes.header}>
       {renderHeaderComponent()}
-      <IconButton
-        onClick={() => window.close()}
-        className={classes.iconButton}
-        disableRipple
-      >
-        <CloseIcon color="inherit" fontSize="large" />
-      </IconButton>
+      <div className={classes.button}>
+        <IconButton
+          onClick={() => window.close()}
+          className={classes.iconButton}
+          disableRipple
+        >
+          <CloseIcon color="inherit" fontSize="large" />
+        </IconButton>
+      </div>
     </header>
   );
 };

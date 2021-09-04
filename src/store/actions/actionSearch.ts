@@ -24,8 +24,7 @@ export const getTotalCoins = () => {
       const response = await fetchApi(requestURL);
       if (response.ok) {
         const json = await response.json();
-        const coins = json.data.map((coin: any) => coin.slug);
-        dispatch(getTotalCoinsSuccess(coins));
+        dispatch(getTotalCoinsSuccess(json.data));
       } else {
         dispatch(getTotalCoinsFailure('Unable to fetch all coins list.'));
       }

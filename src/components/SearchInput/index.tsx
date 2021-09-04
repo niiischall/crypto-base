@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import FormControl from '@material-ui/core/FormControl';
-import Input from '@material-ui/core/Input';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import SearchIcon from '@material-ui/icons/Search';
+import { FormControl, TextField, InputAdornment } from '@material-ui/core';
+import { Search } from '@material-ui/icons';
+import { debounce } from 'lodash';
+
+import SearchResults from './SearchResults';
+import { useSelector } from 'react-redux';
 
 export interface Props {}
 
@@ -11,31 +13,68 @@ const useStyles = makeStyles((theme) => ({
   form: {
     margin: theme.spacing(1),
   },
-  input: {
-    fontSize: 14,
-    color: '#323232',
-  },
 }));
 
 export const SearchInput: React.FC<Props> = (props) => {
   const classes = useStyles();
+  const totalCoins = useSelector((state: any) => state.search.totalCoins);
+
   const [search, setSearch] = useState<string>('');
+  const [searchedResult, setSearchedResult] = useState<any[]>([]);
+  const [suggestions, showSuggestions] = useState<boolean>(false);
+
+  //Debouncing logic for searching through the coins.
+  const searching = () => {
+    if (totalCoins.length > 0) {
+      const filteredSearches = totalCoins.filter((coin: any) => {
+        if (coin.slug.toLowerCase().includes(search.toLowerCase())) {
+          return coin;
+        }
+      });
+      setSearchedResult(filteredSearches);
+    }
+  };
+  const delayedSearch = useCallback(debounce(searching, 300), [search]);
+  const searchHandler = (searchText: string) => {
+    setSearch(searchText);
+  };
+  useEffect(() => {
+    delayedSearch();
+    return delayedSearch.cancel;
+  }, [search, delayedSearch]);
+
+  const onInputBlur = () => {
+    showSuggestions(false);
+  };
+
+  const onInputFocus = () => {
+    showSuggestions(true);
+  };
+
+  const InputProps = {
+    startAdornment: (
+      <InputAdornment position="start">
+        <Search fontSize="large" />
+      </InputAdornment>
+    ),
+    disableUnderline: true,
+    style: { fontSize: 14, color: '#323232' },
+    onBlur: onInputBlur,
+    onFocus: onInputFocus,
+    value: search,
+  };
 
   return (
     <FormControl className={classes.form}>
-      <Input
-        id="input-with-icon-adornment"
-        className={classes.input}
+      <TextField
+        id="coin-search-input"
         placeholder="Search coins"
-        value={search}
-        onChange={(event) => setSearch(event.target.value)}
-        startAdornment={
-          <InputAdornment position="start">
-            <SearchIcon fontSize="large" />
-          </InputAdornment>
-        }
-        disableUnderline={true}
+        InputProps={InputProps}
+        onChange={(event) => searchHandler(event.target.value)}
       />
+      {suggestions && searchedResult && searchedResult.length > 0 && (
+        <SearchResults results={searchedResult} />
+      )}
     </FormControl>
   );
 };

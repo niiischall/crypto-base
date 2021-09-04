@@ -3,7 +3,8 @@ const apiVersion = 'v1';
 const apiKey = `&CMC_PRO_API_KEY=${process.env.REACT_APP_CMC_KEY}`;
 
 export const apiEndPoints = {
-  totalCoins: '/cryptocurrency/map?listing_status=active',
+  totalCoins:
+    '/cryptocurrency/map?sort=cmc_rank&limit=500&listing_status=active',
   popularCoins: '/cryptocurrency/listings/latest?limit=25',
   trendingCoins:
     '/cryptocurrency/listings/latest?sort=percent_change_24h&limit=25',
