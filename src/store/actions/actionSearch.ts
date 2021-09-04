@@ -3,6 +3,38 @@ import { Dispatch } from 'redux';
 import * as types from './actionTypes';
 import { apiEndPoints, fetchApi } from '../../services/api';
 
+const getTotalCoinsSuccess = (coins: any[]) => {
+  return {
+    type: types.FETCH_TOTALCOINS_SUCCESS,
+    coins,
+  };
+};
+
+const getTotalCoinsFailure = (error: string) => {
+  return {
+    type: types.FETCH_TOTALCOINS_FAILURE,
+    error,
+  };
+};
+
+export const getTotalCoins = () => {
+  return async (dispatch: Dispatch<any>) => {
+    const requestURL = apiEndPoints.totalCoins;
+    try {
+      const response = await fetchApi(requestURL);
+      if (response.ok) {
+        const json = await response.json();
+        const coins = json.data.map((coin: any) => coin.slug);
+        dispatch(getTotalCoinsSuccess(coins));
+      } else {
+        dispatch(getTotalCoinsFailure('Unable to fetch all coins list.'));
+      }
+    } catch (error) {
+      dispatch(getTotalCoinsFailure('Unable to fetch all coins details.'));
+    }
+  };
+};
+
 const getTrendingCoinsSuccess = (coins: any[]) => {
   return {
     type: types.FETCH_TRENDING_COINS_SUCCESS,
@@ -18,7 +50,6 @@ const getTrendingCoinsFailure = (error: string) => {
 };
 
 export const getTrendingCoins = () => {
-  console.log('getTrendingCoins!');
   return async (dispatch: Dispatch<any>) => {
     try {
       const response = await fetchApi(apiEndPoints.trendingCoins);

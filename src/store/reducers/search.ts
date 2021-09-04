@@ -1,8 +1,9 @@
 import * as types from '../actions/actionTypes';
 
 const initialState = {
+  totalCoins: [],
   trendingCoins: [],
-  coinsDetails: null,
+  trendingCoinsDetails: null,
   error: '',
 };
 
@@ -13,6 +14,14 @@ const initialState = {
  */
 export default function search(state: any = initialState, action: any) {
   switch (action.type) {
+    case types.FETCH_TOTALCOINS_SUCCESS:
+      return Object.assign({}, state, {
+        totalCoins: action.coins,
+      });
+    case types.FETCH_TOTALCOINS_FAILURE:
+      return Object.assign({}, state, {
+        error: action.error,
+      });
     case types.FETCH_TRENDING_COINS_SUCCESS:
       return Object.assign({}, state, {
         trendingCoins: action.coins,
@@ -23,7 +32,7 @@ export default function search(state: any = initialState, action: any) {
       });
     case types.FETCH_TRENDING_COINS_DETAILS_SUCCESS:
       return Object.assign({}, state, {
-        coinsDetails: action.coinsInfo,
+        trendingCoinsDetails: action.coinsInfo,
       });
     case types.FETCH_TRENDING_COINS_DETAILS_FAILURE:
       return Object.assign({}, state, {

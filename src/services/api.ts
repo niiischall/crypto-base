@@ -3,6 +3,7 @@ const apiVersion = 'v1';
 const apiKey = `&CMC_PRO_API_KEY=${process.env.REACT_APP_CMC_KEY}`;
 
 export const apiEndPoints = {
+  totalCoins: '/cryptocurrency/map?listing_status=active',
   popularCoins: '/cryptocurrency/listings/latest?limit=25',
   trendingCoins:
     '/cryptocurrency/listings/latest?sort=percent_change_24h&limit=25',
@@ -27,7 +28,7 @@ export async function fetchApi(
 
   try {
     return fetch(path, request);
-  } catch (e) {
+  } catch (e: any) {
     const stringError = e && e.toString && e.toString();
     const type =
       stringError === 'TypeError: Network request failed'

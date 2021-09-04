@@ -5,7 +5,10 @@ import { Favorite, Check } from '@material-ui/icons';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 
 import { followCoin, unfollowCoin } from '../../store/actions/actionHome';
-import { getTrendingCoinsDetails } from '../../store/actions/actionSearch';
+import {
+  getTotalCoins,
+  getTrendingCoinsDetails,
+} from '../../store/actions/actionSearch';
 import { normalizePrice, isCoinPresent } from '../../services/helpers';
 
 const useStyles = makeStyles((theme) => ({
@@ -147,15 +150,24 @@ export const Search: React.FC<{}> = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
+  const totalCoins = useSelector((state: any) => state.search.totalCoins);
   const followingCoins = useSelector((state: any) => state.home.followingCoins);
   const trendingCoins = useSelector((state: any) => state.search.trendingCoins);
-  const coinsDetails = useSelector((state: any) => state.search.coinsDetails);
+  const trendingCoinsDetails = useSelector(
+    (state: any) => state.search.trendingCoinsDetails,
+  );
 
   useEffect(() => {
-    if (trendingCoins.length > 0 && !coinsDetails) {
+    if (totalCoins.length === 0) {
+      dispatch(getTotalCoins());
+    }
+  }, [dispatch, totalCoins]);
+
+  useEffect(() => {
+    if (trendingCoins.length > 0 && !trendingCoinsDetails) {
       dispatch(getTrendingCoinsDetails(trendingCoins));
     }
-  }, [dispatch, trendingCoins, coinsDetails]);
+  }, [dispatch, trendingCoins, trendingCoinsDetails]);
 
   const renderPriceChange = (change: any) => {
     const isPositive = change > 0;
@@ -183,14 +195,14 @@ export const Search: React.FC<{}> = (props) => {
   return (
     <div className={classes.searchContainer}>
       {trendingCoins.length > 0 &&
-        coinsDetails &&
+        trendingCoinsDetails &&
         Object.keys(trendingCoins).length > 0 && (
           <>
             <div className={classes.searchHeader}>
               <span className={classes.searchHeading}>Trending Now</span>
             </div>
             {trendingCoins.map((coin: any) => {
-              const logo = coinsDetails[coin.id].logo;
+              const logo = trendingCoinsDetails[coin.id].logo;
               return (
                 <div key={coin.id} className={classes.trendingCoin}>
                   <img
