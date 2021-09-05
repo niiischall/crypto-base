@@ -1,0 +1,25 @@
+{
+  "files": {
+    "app.css": "static/css/app.5ceaeae7.css",
+    "app.js": "app.bundle.js",
+    "app.js.map": "app.bundle.js.map",
+    "background.js": "background.bundle.js",
+    "background.js.map": "background.bundle.js.map",
+    "contentScript.js": "contentScript.bundle.js",
+    "contentScript.js.map": "contentScript.bundle.js.map",
+    "options.js": "options.bundle.js",
+    "options.js.map": "options.bundle.js.map",
+    "app.bundle.js.LICENSE.txt": "app.bundle.js.LICENSE.txt",
+    "options.bundle.js.LICENSE.txt": "options.bundle.js.LICENSE.txt",
+    "options.html": "options.html",
+    "popup.html": "popup.html",
+    "static/css/app.5ceaeae7.css.map": "static/css/app.5ceaeae7.css.map"
+  },
+  "entrypoints": [
+    "static/css/app.5ceaeae7.css",
+    "app.bundle.js",
+    "options.bundle.js",
+    "background.bundle.js",
+    "contentScript.bundle.js"
+  ]
+}

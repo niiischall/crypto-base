@@ -107,3 +107,48 @@ export const getTrendingCoinsDetails = (coins: any[]) => {
     }
   };
 };
+
+export const clearCoinSearch = () => {
+  return {
+    type: types.CLEAR_SEARCH_COIN,
+  };
+};
+
+export const searchCoinTerm = (term: string) => {
+  return {
+    type: types.SEARCH_COIN_TERM,
+    term,
+  };
+};
+
+export const searchCoinSuccess = (coin: any) => {
+  return {
+    type: types.SEARCH_COIN_SUCCESS,
+    coin,
+  };
+};
+
+export const searchCoinFailure = (error: string) => {
+  return {
+    type: types.SEARCH_COIN_FAILURE,
+    error,
+  };
+};
+
+export const searchCoin = (coin: string) => {
+  return async (dispatch: Dispatch<any>) => {
+    dispatch(clearCoinSearch());
+    const requestURL = `${apiEndPoints.coinsInfo}${coin}`;
+    try {
+      const response = await fetchApi(requestURL);
+      if (response.ok) {
+        const json = await response.json();
+        dispatch(searchCoinSuccess(json.data));
+      } else {
+        dispatch(searchCoinFailure('Unable to fetch searched coin details.'));
+      }
+    } catch (error) {
+      dispatch(searchCoinFailure('Unable to fetch searched coin details.'));
+    }
+  };
+};

@@ -8,14 +8,15 @@ const useStyles = makeStyles((theme) => ({
     width: 250,
     maxHeight: 155,
     position: 'absolute',
-    overflow: 'auto',
-    top: 42.5,
+    overflowY: 'auto',
+    top: 43.5,
     left: '15%',
     zIndex: 1,
     backgroundColor: '#fff',
     boxShadow:
       'rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px',
     borderRadius: '0px 0px 5px 5px',
+    transition: 'all .2s',
   },
   root: {
     marginRight: 10,
@@ -45,15 +46,17 @@ const useStyles = makeStyles((theme) => ({
 
 export interface Props {
   results: any[];
+  search: Function;
 }
 
-export const SearchResults: React.FC<Props> = ({ results }) => {
+export const SearchResults: React.FC<Props> = ({ results, search }) => {
   const classes = useStyles();
+
   return (
     <div className={classes.container}>
       {results.map((coin: any) => {
         return (
-          <MenuItem key={coin.id}>
+          <MenuItem key={coin.id} onClick={() => search(coin.name, coin.slug)}>
             <Avatar
               classes={{
                 root: classes.root,

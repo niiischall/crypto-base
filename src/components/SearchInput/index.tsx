@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { FormControl, TextField, InputAdornment } from '@material-ui/core';
+import { useSelector, useDispatch } from 'react-redux';
 import { Search } from '@material-ui/icons';
 import { debounce } from 'lodash';
 
 import SearchResults from './SearchResults';
-import { useSelector } from 'react-redux';
+import { searchCoinTerm, searchCoin } from '../../store/actions/actionSearch';
 
 export interface Props {}
 
@@ -17,9 +18,11 @@ const useStyles = makeStyles((theme) => ({
 
 export const SearchInput: React.FC<Props> = (props) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+
+  const search = useSelector((state: any) => state.search.searchedCoinTerm);
   const totalCoins = useSelector((state: any) => state.search.totalCoins);
 
-  const [search, setSearch] = useState<string>('');
   const [searchedResult, setSearchedResult] = useState<any[]>([]);
   const [suggestions, showSuggestions] = useState<boolean>(false);
 
@@ -35,22 +38,29 @@ export const SearchInput: React.FC<Props> = (props) => {
     }
   };
   const delayedSearch = useCallback(debounce(searching, 300), [search]);
-  const searchHandler = (searchText: string) => {
-    setSearch(searchText);
+  const searchHandler = (term: string) => {
+    dispatch(searchCoinTerm(term));
   };
   useEffect(() => {
     delayedSearch();
     return delayedSearch.cancel;
   }, [search, delayedSearch]);
 
+  //Handlers for interacting with the search
   const onInputBlur = () => {
-    showSuggestions(false);
+    setTimeout(() => showSuggestions(false), 250);
   };
-
   const onInputFocus = () => {
     showSuggestions(true);
   };
 
+  //Handler for searching a coin
+  const handleCoinSearch = (coinName: string, coinSlug: string) => {
+    dispatch(searchCoinTerm(coinName));
+    dispatch(searchCoin(coinSlug));
+  };
+
+  //Properties for Mui-TextField
   const InputProps = {
     startAdornment: (
       <InputAdornment position="start">
@@ -73,7 +83,7 @@ export const SearchInput: React.FC<Props> = (props) => {
         onChange={(event) => searchHandler(event.target.value)}
       />
       {suggestions && searchedResult && searchedResult.length > 0 && (
-        <SearchResults results={searchedResult} />
+        <SearchResults results={searchedResult} search={handleCoinSearch} />
       )}
     </FormControl>
   );

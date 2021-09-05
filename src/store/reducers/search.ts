@@ -4,6 +4,8 @@ const initialState = {
   totalCoins: [],
   trendingCoins: [],
   trendingCoinsDetails: null,
+  searchedCoin: null,
+  searchedCoinTerm: '',
   error: '',
 };
 
@@ -37,6 +39,22 @@ export default function search(state: any = initialState, action: any) {
     case types.FETCH_TRENDING_COINS_DETAILS_FAILURE:
       return Object.assign({}, state, {
         error: action.error,
+      });
+    case types.SEARCH_COIN_TERM:
+      return Object.assign({}, state, {
+        searchedCoinTerm: action.term,
+      });
+    case types.SEARCH_COIN_SUCCESS:
+      return Object.assign({}, state, {
+        searchedCoin: action.coin,
+      });
+    case types.SEARCH_COIN_FAILURE:
+      return Object.assign({}, state, {
+        error: action.error,
+      });
+    case types.CLEAR_SEARCH_COIN:
+      return Object.assign({}, state, {
+        searchedCoin: null,
       });
     default:
       return state;
