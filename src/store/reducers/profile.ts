@@ -1,6 +1,9 @@
 import * as types from '../actions/actionTypes';
 
 const initialState = {
+  userEmail: null,
+  userId: null,
+  idToken: null,
   error: '',
 };
 
@@ -11,6 +14,26 @@ const initialState = {
  */
 export default function profile(state: any = initialState, action: any) {
   switch (action.type) {
+    case types.AUTH_SUCCESS: {
+      return Object.assign({}, state, {
+        userId: action.userId,
+        idToken: action.idToken,
+        userEmail: action.email,
+      });
+    }
+    case types.AUTH_FAILED: {
+      return Object.assign({}, state, {
+        error: action.error,
+      });
+    }
+    case types.AUTH_LOGOUT: {
+      return Object.assign({}, state, {
+        userId: null,
+        idToken: null,
+        error: null,
+        userEmail: '',
+      });
+    }
     default:
       return state;
   }

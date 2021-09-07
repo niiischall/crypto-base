@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "6dd9a02630302e80e807";
+/******/ 	var hotCurrentHash = "41ce2cca9895a78803ee";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -1508,20 +1508,10 @@ module.exports.formatError = function (err) {
 /*!************************************!*\
   !*** ./src/contentScript/index.js ***!
   \************************************/
-/*! exports provided: printAllPageLinks */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "printAllPageLinks", function() { return printAllPageLinks; });
-printAllPageLinks();
-function printAllPageLinks() {
-  const allLinks = Array.from(document.querySelectorAll('a')).map(link => link.href);
-  console.log('-'.repeat(30));
-  console.log(`These are all ${allLinks.length} links on the current page that have been printed by the Sample Create React Extension`);
-  console.log(allLinks);
-  console.log('-'.repeat(30));
-}
+
 
 /***/ }),
 
