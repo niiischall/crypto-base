@@ -22,8 +22,8 @@ export const getTotalCoins = () => {
     const requestURL = apiEndPoints.totalCoins;
     try {
       const response = await fetchApi(requestURL);
+      const json = await response.json();
       if (response.ok) {
-        const json = await response.json();
         dispatch(getTotalCoinsSuccess(json.data));
       } else {
         dispatch(getTotalCoinsFailure('Unable to fetch all coins list.'));
@@ -52,8 +52,8 @@ export const getTrendingCoins = () => {
   return async (dispatch: Dispatch<any>) => {
     try {
       const response = await fetchApi(apiEndPoints.trendingCoins);
+      const json = await response.json();
       if (response.ok) {
-        const json = await response.json();
         dispatch(getTrendingCoinsSuccess(json.data));
       } else {
         dispatch(
@@ -88,8 +88,8 @@ export const getTrendingCoinsDetails = (coins: any[]) => {
     const requestURL = `${apiEndPoints.coinsInfo}${data.join(',')}`;
     try {
       const response = await fetchApi(requestURL);
+      const json = await response.json();
       if (response.ok) {
-        const json = await response.json();
         dispatch(getTrendingCoinsDetailsSuccess(json.data));
       } else {
         dispatch(
@@ -141,8 +141,8 @@ export const searchCoin = (coin: string) => {
     const requestURL = `${apiEndPoints.coinsInfo}${coin}`;
     try {
       const response = await fetchApi(requestURL);
+      const json = await response.json();
       if (response.ok) {
-        const json = await response.json();
         dispatch(searchCoinSuccess(json.data));
       } else {
         dispatch(searchCoinFailure('Unable to fetch searched coin details.'));

@@ -16,9 +16,9 @@ export default function profile(state: any = initialState, action: any) {
   switch (action.type) {
     case types.AUTH_SUCCESS: {
       return Object.assign({}, state, {
+        userEmail: action.email,
         userId: action.userId,
         idToken: action.idToken,
-        userEmail: action.email,
       });
     }
     case types.AUTH_FAILED: {
@@ -28,10 +28,15 @@ export default function profile(state: any = initialState, action: any) {
     }
     case types.AUTH_LOGOUT: {
       return Object.assign({}, state, {
+        userEmail: null,
         userId: null,
         idToken: null,
-        error: null,
-        userEmail: '',
+        error: '',
+      });
+    }
+    case types.AUTH_ERROR_CLEAR: {
+      return Object.assign({}, state, {
+        error: '',
       });
     }
     default:

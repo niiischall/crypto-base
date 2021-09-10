@@ -21,8 +21,8 @@ export const getPopularCoins = () => {
   return async (dispatch: Dispatch<any>) => {
     try {
       const response = await fetchApi(apiEndPoints.popularCoins);
+      const json = await response.json();
       if (response.ok) {
-        const json = await response.json();
         dispatch(getPopularCoinsSuccess(json.data));
       } else {
         dispatch(
@@ -57,8 +57,8 @@ export const getPopularCoinsDetails = (coins: any[]) => {
     const requestURL = `${apiEndPoints.coinsInfo}${data.join(',')}`;
     try {
       const response = await fetchApi(requestURL);
+      const json = await response.json();
       if (response.ok) {
-        const json = await response.json();
         dispatch(getPopularCoinsDetailsSuccess(json.data));
       } else {
         dispatch(
@@ -109,8 +109,8 @@ export const getFollowingCoinsDetails = (coins: any[]) => {
     const requestURL = `${apiEndPoints.coinsInfo}${data.join(',')}`;
     try {
       const response = await fetchApi(requestURL);
+      const json = await response.json();
       if (response.ok) {
-        const json = await response.json();
         dispatch(getFollowingCoinsDetailsSuccess(json.data));
       } else {
         dispatch(

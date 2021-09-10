@@ -14,6 +14,7 @@ import { getTrendingCoins } from '../../store/actions/actionSearch';
 
 export interface Props {
   currentPage: string;
+  switchPage: Function;
 }
 
 export const Layout: React.FC<Props> = (props) => {
@@ -54,7 +55,7 @@ export const Layout: React.FC<Props> = (props) => {
     <React.Fragment>
       {currentPage === 'home' && <Home />}
       {currentPage === 'search' && <Search />}
-      {currentPage === 'profile' && <Profile />}
+      {currentPage === 'profile' && <Profile switchPage={props.switchPage} />}
     </React.Fragment>
   );
 };
