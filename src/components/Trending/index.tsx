@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Button } from '@material-ui/core';
-import { Favorite, Check } from '@material-ui/icons';
+import { Favorite, Check, WhatshotSharp } from '@material-ui/icons';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 
 import { followCoin, unfollowCoin } from '../../store/actions/actionHome';
@@ -24,6 +24,10 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     fontSize: 15,
     fontWeight: 700,
+  },
+  icon: {
+    marginLeft: 5,
+    fontSize: 15,
   },
   trendingCoin: {
     backgroundColor: '#f8f8f8',
@@ -170,7 +174,9 @@ export const Trending: React.FC<Props> = (props) => {
         Object.keys(trendingCoins).length > 0 && (
           <>
             <div className={classes.searchHeader}>
-              <span className={classes.searchHeading}>Trending Now</span>
+              <span className={classes.searchHeading}>
+                Spotlight <WhatshotSharp className={classes.icon} />
+              </span>
             </div>
             {trendingCoins.map((coin: any) => {
               const logo = trendingCoinsDetails[coin.id].logo;

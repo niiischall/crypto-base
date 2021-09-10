@@ -29,3 +29,10 @@ export function normalizePrice(value: any, precision: any = 0) {
 export function isCoinPresent(coin: any, data: any[]) {
   return data.find((element: any) => element.slug === coin.slug);
 }
+
+export function normalizeText(value: any) {
+  if (!value) {
+    return null;
+  }
+  return value;
+}
