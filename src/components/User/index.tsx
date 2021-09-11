@@ -1,5 +1,5 @@
 import React from 'react';
-import { AccountCircle } from '@material-ui/icons';
+import { AccountCircle, PersonAdd } from '@material-ui/icons';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -11,26 +11,35 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
   },
   userName: {
-    fontSize: 16,
-    fontWeight: 600,
+    fontSize: 14,
+    fontWeight: 400,
     color: ' #323232',
   },
 }));
 
 export const User: React.FC<Props> = (props) => {
   const classes = useStyles();
-  const userId = useSelector((state: any) => state.profile.userId);
+  const userEmail = useSelector((state: any) => state.profile.userEmail);
 
   return (
     <div className={classes.userContainer}>
-      {userId ? (
-        <span className={classes.userName}>User</span>
+      {userEmail ? (
+        <>
+          <AccountCircle
+            style={{
+              color: '#ccc',
+              fontSize: 32,
+              marginRight: 7.5,
+            }}
+          />
+          <span className={classes.userName}>{userEmail}</span>
+        </>
       ) : (
-        <AccountCircle
+        <PersonAdd
           style={{
-            color: '#ccc',
-            fontSize: 32,
-            marginRight: 7.5,
+            color: '#979797',
+            fontSize: 30,
+            marginLeft: 10,
           }}
         />
       )}

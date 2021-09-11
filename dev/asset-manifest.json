@@ -11,6 +11,7 @@
   },
   "entrypoints": [
     "app.bundle.js",
+    "app.5824c336280a3716a3d2.hot-update.js",
     "options.bundle.js",
     "background.bundle.js",
     "contentScript.bundle.js"

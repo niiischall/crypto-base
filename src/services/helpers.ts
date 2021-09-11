@@ -36,3 +36,9 @@ export function normalizeText(value: any) {
   }
   return value;
 }
+
+export function normalizeError(error: string) {
+  let normalizedError = error;
+  normalizedError = error.replace(/_/g, ' ');
+  return normalizedError.toLowerCase();
+}
