@@ -1,15 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { makeStyles, createStyles, withStyles } from '@material-ui/core/styles';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import HomeIcon from '@material-ui/icons/Home';
-import SearchIcon from '@material-ui/icons/Search';
-import PersonIcon from '@material-ui/icons/Person';
+import { Tabs, Tab } from '@material-ui/core';
+import { Home, Search, Person } from '@material-ui/icons';
 
-export interface Props {
-  currentPage: string;
-  switchPage: Function;
-}
+import pageContext from '../../services/context';
 
 const StyledTabs = withStyles({
   root: {
@@ -53,20 +47,20 @@ const useStyles = makeStyles((theme) =>
   }),
 );
 
-export const Navigation: React.FC<Props> = (props) => {
+export const Navigation: React.FC<{}> = (props) => {
   const classes = useStyles(props);
-  const { currentPage, switchPage } = props;
+  const { page, switchPage } = useContext(pageContext);
 
   return (
     <div className={classes.container}>
       <StyledTabs
-        value={currentPage}
+        value={page}
         onChange={switchPage}
         aria-label="Navigation tabs"
       >
-        <StyledTab value="home" icon={<HomeIcon fontSize="large" />} />
-        <StyledTab value="search" icon={<SearchIcon fontSize="large" />} />
-        <StyledTab value="profile" icon={<PersonIcon fontSize="large" />} />
+        <StyledTab value="home" icon={<Home fontSize="large" />} />
+        <StyledTab value="search" icon={<Search fontSize="large" />} />
+        <StyledTab value="profile" icon={<Person fontSize="large" />} />
       </StyledTabs>
     </div>
   );

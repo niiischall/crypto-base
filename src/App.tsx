@@ -6,6 +6,7 @@ import Header from './components/Header';
 import Layout from './pages/Layout';
 import Navigation from './components/Navigation';
 
+import { pages, PageProvider } from './services/context';
 import { checkAuthState } from './store/actions/actionProfile';
 
 export interface Props {}
@@ -25,11 +26,8 @@ export const App: React.FC<Props> = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  //State and handler to switch between tabs.
-  const [value, setValue] = useState<string>('home');
-  const handleChange = (event: any, newValue: string) => {
-    setValue(newValue);
-  };
+  const [page, setPage] = useState<string>(pages.home);
+  const handlePageChange = (event: any, newValue: string) => setPage(newValue);
 
   //Check for Auth State
   useEffect(() => {
@@ -38,9 +36,16 @@ export const App: React.FC<Props> = () => {
 
   return (
     <div className={classes.appContainer}>
-      <Header currentPage={value} />
-      <Layout currentPage={value} switchPage={handleChange} />
-      <Navigation currentPage={value} switchPage={handleChange} />
+      <PageProvider
+        value={{
+          page,
+          switchPage: handlePageChange,
+        }}
+      >
+        <Header />
+        <Layout />
+        <Navigation />
+      </PageProvider>
     </div>
   );
 };

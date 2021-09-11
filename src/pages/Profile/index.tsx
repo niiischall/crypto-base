@@ -7,17 +7,13 @@ import LogIn from '../../components/Profile/SignIn';
 import Confirmation from '../../components/Profile/Confirmation';
 import { auth } from '../../store/actions/actionProfile';
 
-export interface Props {
-  switchPage: Function;
-}
-
 const useStyles = makeStyles((theme) => ({
   profileContainer: {
     flex: 1,
   },
 }));
 
-export const Profile: React.FC<Props> = ({ switchPage }) => {
+export const Profile: React.FC<{}> = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const userId = useSelector((state: any) => state.profile.userId);
@@ -45,7 +41,7 @@ export const Profile: React.FC<Props> = ({ switchPage }) => {
           <SignUp toggleForm={toggleForm} submitForm={submitForm} />
         )
       ) : (
-        <Confirmation switchPage={switchPage} />
+        <Confirmation />
       )}
     </div>
   );

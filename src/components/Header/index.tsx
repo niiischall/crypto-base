@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { IconButton } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
@@ -6,10 +6,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import LogoComponent from '../Logo';
 import SearchInput from '../SearchInput';
 import User from '../User';
-
-export interface Props {
-  currentPage: string;
-}
+import pageContext from '../../services/context';
 
 const useStyles = makeStyles((theme) => ({
   header: {
@@ -35,19 +32,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const Header: React.FC<Props> = (props) => {
+export const Header: React.FC<{}> = (props) => {
   const classes = useStyles();
-  const { currentPage } = props;
+
+  const { page } = useContext(pageContext);
 
   const renderHeaderComponent = () => {
     let headerComponent = null;
-    if (currentPage === 'home') {
-      headerComponent = <LogoComponent />;
-    } else if (currentPage === 'search') {
-      headerComponent = <SearchInput />;
-    } else if (currentPage === 'profile') {
-      headerComponent = <User />;
-    }
+    if (page === 'home') headerComponent = <LogoComponent />;
+    else if (page === 'search') headerComponent = <SearchInput />;
+    else if (page === 'profile') headerComponent = <User />;
+
     return headerComponent;
   };
 

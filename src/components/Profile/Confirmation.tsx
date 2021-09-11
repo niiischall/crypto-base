@@ -1,13 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { useDispatch } from 'react-redux';
 import { Button, withStyles } from '@material-ui/core';
 
 import { authLogout } from '../../store/actions/actionProfile';
-
-export interface Props {
-  switchPage: Function;
-}
+import pageContext, { pages } from '../../services/context';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -58,16 +55,18 @@ const StyledButton = withStyles((theme) => ({
   },
 }))((props: any) => <Button disableRipple {...props} />);
 
-export const Confirmation: React.FC<Props> = (props) => {
+export const Confirmation: React.FC<{}> = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
+
+  const { switchPage } = useContext(pageContext);
 
   const handleLogout = () => {
     dispatch(authLogout());
   };
 
-  const handleNavigation = () => {
-    props.switchPage('home');
+  const handleNavigation = (event: any) => {
+    switchPage(event, pages.home);
   };
 
   return (
@@ -80,7 +79,9 @@ export const Confirmation: React.FC<Props> = (props) => {
       <h3 className={classes.heading}>You're in!</h3>
       <p className={classes.statement}>We're so glad you're here.</p>
       <div className={classes.buttonContainer}>
-        <StyledButton onClick={handleNavigation}>Home</StyledButton>
+        <StyledButton onClick={(event: any) => handleNavigation(event)}>
+          Home
+        </StyledButton>
         <StyledButton onClick={handleLogout}>Logout</StyledButton>
       </div>
     </div>
