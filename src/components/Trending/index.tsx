@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Button } from '@material-ui/core';
-import { Favorite, Check, WhatshotSharp } from '@material-ui/icons';
+import { Favorite, Check } from '@material-ui/icons';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 
 import { followCoin, unfollowCoin } from '../../store/actions/actionHome';
 import { normalizePrice, isCoinPresent } from '../../services/helpers';
+import NotSignedInDialog from '../../components/Dialogs/NotSignedIn';
 
 export interface Props {}
 
@@ -27,7 +28,8 @@ const useStyles = makeStyles((theme) => ({
   },
   icon: {
     marginLeft: 5,
-    fontSize: 15,
+    width: 15,
+    height: 15,
   },
   trendingCoin: {
     backgroundColor: '#f8f8f8',
@@ -138,11 +140,20 @@ export const Trending: React.FC<Props> = (props) => {
   const classes = useStyles();
 
   const dispatch = useDispatch();
+  const userId = useSelector((state: any) => state.profile.userId);
   const trendingCoins = useSelector((state: any) => state.search.trendingCoins);
   const trendingCoinsDetails = useSelector(
     (state: any) => state.search.trendingCoinsDetails,
   );
   const followingCoins = useSelector((state: any) => state.home.followingCoins);
+
+  const [openDialog, setDialogOpen] = useState<boolean>(false);
+  const handleDialogOpen = () => {
+    setDialogOpen(true);
+  };
+  const handleDialogClose = () => {
+    setDialogOpen(false);
+  };
 
   const renderPriceChange = (change: any) => {
     const isPositive = change > 0;
@@ -162,9 +173,16 @@ export const Trending: React.FC<Props> = (props) => {
   };
 
   const coinHandler = (coin: any) => {
-    const isCoinFollowed = isCoinPresent(coin, followingCoins);
-    if (isCoinFollowed) dispatch(unfollowCoin(coin));
-    else dispatch(followCoin(coin));
+    if (userId) {
+      const isCoinFollowed = isCoinPresent(coin, followingCoins);
+      if (isCoinFollowed) {
+        dispatch(unfollowCoin(coin));
+      } else {
+        dispatch(followCoin(coin));
+      }
+    } else {
+      handleDialogOpen();
+    }
   };
 
   return (
@@ -174,9 +192,12 @@ export const Trending: React.FC<Props> = (props) => {
         Object.keys(trendingCoins).length > 0 && (
           <>
             <div className={classes.searchHeader}>
-              <span className={classes.searchHeading}>
-                Spotlight <WhatshotSharp className={classes.icon} />
-              </span>
+              <span className={classes.searchHeading}>Trending Now</span>
+              <img
+                src="/img/fire-emoji.png"
+                alt="fire-emoji"
+                className={classes.icon}
+              />
             </div>
             {trendingCoins.map((coin: any) => {
               const logo = trendingCoinsDetails[coin.id].logo;
@@ -221,6 +242,7 @@ export const Trending: React.FC<Props> = (props) => {
             })}
           </>
         )}
+      <NotSignedInDialog open={openDialog} onClose={handleDialogClose} />
     </React.Fragment>
   );
 };

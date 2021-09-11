@@ -47,7 +47,7 @@ const StyledButton = withStyles((theme) => ({
     backgroundColor: '#000',
     boxShadow: '0 0 0 1px rgb(0 0 0 / 5%), 0 5px 15px rgb(0 0 0 / 15%)',
     '&:hover': {
-      color: '#000',
+      color: '#669900',
     },
   },
   endIcon: {
