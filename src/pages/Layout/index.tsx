@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect, useCallback, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Home from '../Home';
@@ -11,16 +11,13 @@ import {
   getFollowingCoinsDetails,
 } from '../../store/actions/actionHome';
 import { getTrendingCoins } from '../../store/actions/actionSearch';
+import pageContext from '../../services/context';
 
-export interface Props {
-  currentPage: string;
-  switchPage: Function;
-}
-
-export const Layout: React.FC<Props> = (props) => {
-  const { currentPage } = props;
+export const Layout: React.FC<{}> = () => {
   const dispatch = useDispatch();
   const followingCoins = useSelector((state: any) => state.home.followingCoins);
+
+  const { page } = useContext(pageContext);
 
   const gatherInitialData = useCallback(() => {
     dispatch(getPopularCoins());
@@ -53,9 +50,9 @@ export const Layout: React.FC<Props> = (props) => {
 
   return (
     <React.Fragment>
-      {currentPage === 'home' && <Home />}
-      {currentPage === 'search' && <Search />}
-      {currentPage === 'profile' && <Profile switchPage={props.switchPage} />}
+      {page === 'home' && <Home />}
+      {page === 'search' && <Search />}
+      {page === 'profile' && <Profile />}
     </React.Fragment>
   );
 };
