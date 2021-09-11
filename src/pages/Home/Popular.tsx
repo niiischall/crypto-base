@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import { IconButton } from '@material-ui/core';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 
+import NotSignedInDialog from '../../components/Dialogs/NotSignedIn';
 import { followCoin, unfollowCoin } from '../../store/actions/actionHome';
 import { normalizePrice, isCoinPresent } from '../../services/helpers';
 
@@ -71,6 +72,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: 2,
     fontWeight: 500,
   },
+  dialog: {},
 }));
 
 export const Popular: React.FC<Props> = () => {
@@ -78,15 +80,31 @@ export const Popular: React.FC<Props> = () => {
 
   const dispatch = useDispatch();
   const coins = useSelector((state: any) => state.home.popularCoins);
+  const userId = useSelector((state: any) => state.profile.userId);
   const followingCoins = useSelector((state: any) => state.home.followingCoins);
   const coinsDetails = useSelector(
     (state: any) => state.home.popularCoinsDetails,
   );
 
+  const [openDialog, setDialogOpen] = useState<boolean>(false);
+  const handleDialogOpen = () => {
+    setDialogOpen(true);
+  };
+  const handleDialogClose = () => {
+    setDialogOpen(false);
+  };
+
   const coinHandler = (coin: any) => {
     const isCoinFollowed = isCoinPresent(coin, followingCoins);
-    if (isCoinFollowed) dispatch(unfollowCoin(coin));
-    else dispatch(followCoin(coin));
+    if (userId) {
+      if (isCoinFollowed) {
+        dispatch(unfollowCoin(coin));
+      } else {
+        dispatch(followCoin(coin));
+      }
+    } else {
+      handleDialogOpen();
+    }
   };
 
   const renderPriceChange = (change: any) => {
@@ -147,6 +165,7 @@ export const Popular: React.FC<Props> = () => {
             </div>
           );
         })}
+      <NotSignedInDialog open={openDialog} onClose={handleDialogClose} />
     </div>
   );
 };
