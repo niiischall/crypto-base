@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Button } from '@material-ui/core';
 import { Favorite, Check } from '@material-ui/icons';
@@ -7,6 +7,8 @@ import { makeStyles, withStyles } from '@material-ui/core/styles';
 import { followCoin, unfollowCoin } from '../../store/actions/actionHome';
 import { normalizePrice, isCoinPresent } from '../../services/helpers';
 import NotSignedInDialog from '../../components/Dialogs/NotSignedIn';
+import NotUnfollowedDialog from '../../components/Dialogs/Unfollow';
+import pageContext, { pages } from '../../services/context';
 
 export interface Props {}
 
@@ -138,6 +140,7 @@ const StyledUnfollowButton = withStyles((theme) => ({
 
 export const Trending: React.FC<Props> = (props) => {
   const classes = useStyles();
+  const { switchPage } = useContext(pageContext);
 
   const dispatch = useDispatch();
   const userId = useSelector((state: any) => state.profile.userId);
@@ -146,13 +149,25 @@ export const Trending: React.FC<Props> = (props) => {
     (state: any) => state.search.trendingCoinsDetails,
   );
   const followingCoins = useSelector((state: any) => state.home.followingCoins);
+  const notifiedCoins = useSelector(
+    (state: any) => state.home.notificationCoins,
+  );
 
-  const [openDialog, setDialogOpen] = useState<boolean>(false);
-  const handleDialogOpen = () => {
-    setDialogOpen(true);
+  const [openSignedInDialog, setSignedInDialogOpen] = useState<boolean>(false);
+  const [openFollowDialog, setFollowDialogOpen] = useState<boolean>(false);
+
+  const handleSignedInDialogOpen = () => {
+    setSignedInDialogOpen(true);
   };
-  const handleDialogClose = () => {
-    setDialogOpen(false);
+  const handleSignedInDialogClose = () => {
+    setSignedInDialogOpen(false);
+  };
+
+  const handleFollowDialogOpen = () => {
+    setFollowDialogOpen(true);
+  };
+  const handleFollowDialogClose = () => {
+    setSignedInDialogOpen(false);
   };
 
   const renderPriceChange = (change: any) => {
@@ -175,13 +190,18 @@ export const Trending: React.FC<Props> = (props) => {
   const coinHandler = (coin: any) => {
     if (userId) {
       const isCoinFollowed = isCoinPresent(coin, followingCoins);
-      if (isCoinFollowed) {
-        dispatch(unfollowCoin(coin));
+      const isCoinNotified = isCoinPresent(coin, notifiedCoins);
+      if (userId) {
+        if (isCoinFollowed && !isCoinNotified) {
+          dispatch(unfollowCoin(coin));
+        } else if (!isCoinFollowed && !isCoinNotified) {
+          dispatch(followCoin(coin));
+        } else if (isCoinFollowed && isCoinNotified) {
+          handleFollowDialogOpen();
+        }
       } else {
-        dispatch(followCoin(coin));
+        handleSignedInDialogOpen();
       }
-    } else {
-      handleDialogOpen();
     }
   };
 
@@ -242,7 +262,15 @@ export const Trending: React.FC<Props> = (props) => {
             })}
           </>
         )}
-      <NotSignedInDialog open={openDialog} onClose={handleDialogClose} />
+      <NotSignedInDialog
+        open={openSignedInDialog}
+        onClose={handleSignedInDialogClose}
+      />
+      <NotUnfollowedDialog
+        open={openFollowDialog}
+        onClose={handleFollowDialogClose}
+        switchPage={(event: any) => switchPage(event, pages.home)}
+      />
     </React.Fragment>
   );
 };

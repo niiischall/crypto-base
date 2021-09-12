@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "a86aec60f4afc2dd57c3";
+/******/ 	var hotCurrentHash = "60c3f066fe2df9527e81";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -41082,7 +41082,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "normalizeText", function() { return normalizeText; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "normalizeError", function() { return normalizeError; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "normalizeNotificationMessage", function() { return normalizeNotificationMessage; });
-const API_RECALL_TIMER = 900000;
+const API_RECALL_TIMER = 60000;
 function normalizePrice(value, precision = 0) {
   let toReturn = value;
 
