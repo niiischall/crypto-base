@@ -1,7 +1,23 @@
 import { Dispatch } from 'redux';
+import { doc, setDoc } from 'firebase/firestore';
+import db from '../../services/firebase';
 
 import * as types from './actionTypes';
 import { apiEndPoints, fetchApi } from '../../services/api';
+
+export const getFollowingCoins = (coins: any[]) => {
+  return {
+    type: types.FOLLOWING_COINS,
+    followingCoins: coins,
+  };
+};
+
+export const getNotifiedCoins = (coins: any[]) => {
+  return {
+    type: types.NOTIFIED_COINS,
+    notificationCoins: coins,
+  };
+};
 
 const getPopularCoinsSuccess = (coins: any[]) => {
   return {
@@ -76,16 +92,30 @@ export const getPopularCoinsDetails = (coins: any[]) => {
 };
 
 export const followCoin = (coin: any) => {
-  return {
-    type: types.FOLLOW_COIN,
-    coin,
+  return async (dispatch: Dispatch<any>, getState: any) => {
+    const userId = getState().profile.userId;
+    const following = getState().home.followingCoins.concat(coin);
+    const notification = getState().home.notificationCoins;
+    await setDoc(doc(db, 'users', userId), {
+      userId,
+      following,
+      notification,
+    });
   };
 };
 
-export const unfollowCoin = (coin: any) => {
-  return {
-    type: types.UNFOLLOW_COIN,
-    coin,
+export const unfollowCoin = (unfollowedCoin: any) => {
+  return async (dispatch: Dispatch<any>, getState: any) => {
+    const userId = getState().profile.userId;
+    const following = getState().home.followingCoins.filter(
+      (coin: any) => coin.slug !== unfollowedCoin.slug,
+    );
+    const notification = getState().home.notificationCoins;
+    await setDoc(doc(db, 'users', userId), {
+      userId,
+      following,
+      notification,
+    });
   };
 };
 
@@ -129,16 +159,30 @@ export const getFollowingCoinsDetails = (coins: any[]) => {
   };
 };
 
-export const startNotifications = (coin: string) => {
-  return {
-    type: types.START_COIN_NOTIFICATION,
-    coin,
+export const startNotifications = (coin: any) => {
+  return async (dispatch: Dispatch<any>, getState: any) => {
+    const userId = getState().profile.userId;
+    const following = getState().home.followingCoins;
+    const notification = getState().home.notificationCoins.concat(coin);
+    await setDoc(doc(db, 'users', userId), {
+      userId,
+      following,
+      notification,
+    });
   };
 };
 
-export const stopNotifications = (coin: string) => {
-  return {
-    type: types.STOP_COIN_NOTIFICATION,
-    coin,
+export const stopNotifications = (unNotifiedCoin: any) => {
+  return async (dispatch: Dispatch<any>, getState: any) => {
+    const userId = getState().profile.userId;
+    const following = getState().home.followingCoins;
+    const notification = getState().home.notificationCoins.filter(
+      (coin: any) => coin.slug !== unNotifiedCoin.slug,
+    );
+    await setDoc(doc(db, 'users', userId), {
+      userId,
+      following,
+      notification,
+    });
   };
 };

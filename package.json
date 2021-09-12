@@ -13,6 +13,7 @@
     "@types/lodash": "^4.14.172",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
+    "firebase": "^9.0.2",
     "lodash": "^4.17.21",
     "prettier": "^2.3.2",
     "react": "^17.0.2",

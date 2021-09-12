@@ -36,16 +36,14 @@ export default function home(state: any = initialState, action: any) {
         error: action.error,
       });
     }
-    case types.FOLLOW_COIN: {
+    case types.FOLLOWING_COINS: {
       return Object.assign({}, state, {
-        followingCoins: state.followingCoins.concat(action.coin),
+        followingCoins: action.followingCoins,
       });
     }
-    case types.UNFOLLOW_COIN: {
+    case types.NOTIFIED_COINS: {
       return Object.assign({}, state, {
-        followingCoins: state.followingCoins.filter(
-          (coin: any) => coin.slug !== action.coin.slug,
-        ),
+        notificationCoins: action.notificationCoins,
       });
     }
     case types.FETCH_FOLLOWING_COINS_DETAILS_SUCCESS: {
