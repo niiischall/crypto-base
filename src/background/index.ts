@@ -60,7 +60,7 @@ const notificationInBackground = async () => {
         chrome.notifications.create(notificationID, {
           type: 'basic',
           iconUrl: 'img/icon-128.png',
-          title: 'CryptoBase Notification',
+          title: 'CryptoBase Market Watch',
           message: notificationMessage,
           priority: 2,
         });

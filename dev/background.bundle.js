@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "a86aec60f4afc2dd57c3";
+/******/ 	var hotCurrentHash = "c2cc04a4f0702ca714ba";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -40953,7 +40953,7 @@ const notificationInBackground = async () => {
         chrome.notifications.create(notificationID, {
           type: 'basic',
           iconUrl: 'img/icon-128.png',
-          title: 'CryptoBase Notification',
+          title: 'CryptoBase Market Watch',
           message: notificationMessage,
           priority: 2
         });
