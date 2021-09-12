@@ -5,10 +5,13 @@ import { IconButton } from '@material-ui/core';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 
 import NotSignedInDialog from '../../components/Dialogs/NotSignedIn';
+import NotUnfollowedDialog from '../../components/Dialogs/Unfollow';
 import { followCoin, unfollowCoin } from '../../store/actions/actionHome';
 import { normalizePrice, isCoinPresent } from '../../services/helpers';
 
-export interface Props {}
+export interface Props {
+  switchTab: Function;
+}
 
 const useStyles = makeStyles((theme) => ({
   listingsContainer: {
@@ -75,35 +78,50 @@ const useStyles = makeStyles((theme) => ({
   dialog: {},
 }));
 
-export const Popular: React.FC<Props> = () => {
+export const Popular: React.FC<Props> = ({ switchTab }) => {
   const classes = useStyles();
 
   const dispatch = useDispatch();
   const coins = useSelector((state: any) => state.home.popularCoins);
   const userId = useSelector((state: any) => state.profile.userId);
   const followingCoins = useSelector((state: any) => state.home.followingCoins);
+  const notifiedCoins = useSelector(
+    (state: any) => state.home.notificationCoins,
+  );
   const coinsDetails = useSelector(
     (state: any) => state.home.popularCoinsDetails,
   );
 
-  const [openDialog, setDialogOpen] = useState<boolean>(false);
-  const handleDialogOpen = () => {
-    setDialogOpen(true);
+  const [openSignedInDialog, setSignedInDialogOpen] = useState<boolean>(false);
+  const [openFollowDialog, setFollowDialogOpen] = useState<boolean>(false);
+
+  const handleSignedInDialogOpen = () => {
+    setSignedInDialogOpen(true);
   };
-  const handleDialogClose = () => {
-    setDialogOpen(false);
+  const handleSignedInDialogClose = () => {
+    setSignedInDialogOpen(false);
+  };
+
+  const handleFollowDialogOpen = () => {
+    setFollowDialogOpen(true);
+  };
+  const handleFollowDialogClose = () => {
+    setSignedInDialogOpen(false);
   };
 
   const coinHandler = (coin: any) => {
     const isCoinFollowed = isCoinPresent(coin, followingCoins);
+    const isCoinNotified = isCoinPresent(coin, notifiedCoins);
     if (userId) {
-      if (isCoinFollowed) {
+      if (isCoinFollowed && !isCoinNotified) {
         dispatch(unfollowCoin(coin));
-      } else {
+      } else if (!isCoinFollowed && !isCoinNotified) {
         dispatch(followCoin(coin));
+      } else if (isCoinFollowed && isCoinNotified) {
+        handleFollowDialogOpen();
       }
     } else {
-      handleDialogOpen();
+      handleSignedInDialogOpen();
     }
   };
 
@@ -165,7 +183,15 @@ export const Popular: React.FC<Props> = () => {
             </div>
           );
         })}
-      <NotSignedInDialog open={openDialog} onClose={handleDialogClose} />
+      <NotSignedInDialog
+        open={openSignedInDialog}
+        onClose={handleSignedInDialogClose}
+      />
+      <NotUnfollowedDialog
+        open={openFollowDialog}
+        onClose={handleFollowDialogClose}
+        switchPage={(event: any) => switchTab(event, 1)}
+      />
     </div>
   );
 };

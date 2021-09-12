@@ -1,4 +1,4 @@
-export const API_RECALL_TIMER = 900000;
+export const API_RECALL_TIMER = 60000;
 
 export function normalizePrice(value: any, precision: any = 0) {
   let toReturn = value;

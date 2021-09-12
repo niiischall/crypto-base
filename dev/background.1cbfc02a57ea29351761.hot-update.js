@@ -55,7 +55,7 @@ const notificationInBackground = async () => {
   await getNotificationMessage(); //Setting up alarm for notification.
 
   chrome.alarms.create('NOTIFICATION_ALARM', {
-    periodInMinutes: 1
+    periodInMinutes: 1440
   }); //Firing notification upon that alarm.
 
   chrome.alarms.onAlarm.addListener(async alarm => {
@@ -67,7 +67,7 @@ const notificationInBackground = async () => {
         chrome.notifications.create(notificationID, {
           type: 'basic',
           iconUrl: 'img/icon-128.png',
-          title: 'CryptoBase Price Ticker',
+          title: 'CryptoBase Notification',
           message: notificationMessage,
           priority: 2
         });

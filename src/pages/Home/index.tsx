@@ -165,7 +165,7 @@ export const Home: React.FC<{}> = (props) => {
           />
         </StyledTabs>
       </div>
-      {currentTab === 0 && <Popular />}
+      {currentTab === 0 && <Popular switchTab={handleChange} />}
       {currentTab === 1 && <Following />}
     </div>
   );

@@ -10,6 +10,7 @@
     "options.js": "options.bundle.js",
     "options.js.map": "options.bundle.js.map",
     "app.bundle.js.LICENSE.txt": "app.bundle.js.LICENSE.txt",
+    "background.bundle.js.LICENSE.txt": "background.bundle.js.LICENSE.txt",
     "options.bundle.js.LICENSE.txt": "options.bundle.js.LICENSE.txt",
     "options.html": "options.html",
     "popup.html": "popup.html",
