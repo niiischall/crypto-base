@@ -12,6 +12,7 @@ export const apiEndPoints = {
   trendingCoins:
     '/cryptocurrency/listings/latest?sort=percent_change_24h&limit=25',
   coinsInfo: '/cryptocurrency/info?slug=',
+  coinsQuotes: '/cryptocurrency/quotes/latest?slug=',
   signUp: `/accounts:signUp`,
   signIn: `/accounts:signInWithPassword`,
 };
