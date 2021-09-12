@@ -42,3 +42,10 @@ export function normalizeError(error: string) {
   normalizedError = error.replace(/_/g, ' ');
   return normalizedError.toLowerCase();
 }
+
+export function normalizeNotificationMessage(latestQuotes: any[]) {
+  const notificationStatus = latestQuotes.map((coin: any) => {
+    return `${coin.name} is currently at ${coin.price}.`;
+  });
+  return notificationStatus.join('\n');
+}
