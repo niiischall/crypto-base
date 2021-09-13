@@ -5,7 +5,7 @@ import { IconButton } from '@material-ui/core';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 
 import NotSignedInDialog from '../../components/Dialogs/NotSignedIn';
-import NotUnfollowedDialog from '../../components/Dialogs/Unfollow';
+import NotUnfollowedDialog from '../../components/Dialogs/NotUnFollowed';
 import { followCoin, unfollowCoin } from '../../store/actions/actionHome';
 import { normalizePrice, isCoinPresent } from '../../services/helpers';
 

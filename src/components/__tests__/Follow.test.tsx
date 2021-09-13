@@ -1,14 +1,40 @@
-import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { mount } from 'enzyme';
+import { store } from '../../mocks/mock';
+import * as ReactReduxHooks from '../../services/react-redux-hooks';
 
-import { Follow } from '../Following/Follow';
+import Follow from '../Following/Follow';
 
-const props = {};
+const setup = () => {
+  const component = mount(
+    <Provider store={store}>
+      <Follow />
+    </Provider>,
+  );
+  return {
+    component,
+  };
+};
 
-describe('Following Component', () => {
-  const div = document.createElement('div');
+describe('Follow Component', () => {
+  let enzymeWrapper: any;
+  const { component } = setup();
+
+  beforeEach(() => {
+    /* mocking useSelector on our mock store */
+    jest
+      .spyOn(ReactReduxHooks, 'useSelector')
+      .mockImplementation((state) => store.getState());
+    /* mocking useDispatch on our mock store  */
+    jest
+      .spyOn(ReactReduxHooks, 'useDispatch')
+      .mockImplementation(() => store.dispatch);
+
+    /* shallow rendering */
+    enzymeWrapper = component;
+  });
 
   it('should match snapshot', () => {
-    const component = ReactDOM.render(<Follow {...props} />, div);
-    expect(component).toMatchSnapshot();
+    expect(enzymeWrapper).toMatchSnapshot();
   });
 });

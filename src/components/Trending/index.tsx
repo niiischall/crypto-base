@@ -7,7 +7,7 @@ import { makeStyles, withStyles } from '@material-ui/core/styles';
 import { followCoin, unfollowCoin } from '../../store/actions/actionHome';
 import { normalizePrice, isCoinPresent } from '../../services/helpers';
 import NotSignedInDialog from '../../components/Dialogs/NotSignedIn';
-import NotUnfollowedDialog from '../../components/Dialogs/Unfollow';
+import NotUnfollowedDialog from '../Dialogs/NotUnFollowed';
 import pageContext, { pages } from '../../services/context';
 
 export interface Props {}

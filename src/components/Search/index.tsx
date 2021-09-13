@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
@@ -103,19 +103,44 @@ export const Search: React.FC<Props> = (props) => {
   const classes = useStyles();
   const searchedCoin = useSelector((state: any) => state.search.searchedCoin);
 
+  const [coinDetails, setCoinDetails] = useState<any>({
+    name: '',
+    logo: '',
+    symbol: '',
+    urls: '',
+    month: '',
+    day: '',
+    year: '',
+    desc: '',
+  });
+
+  useEffect(() => {
+    if (searchedCoin) {
+      const coin: any = Object.values(searchedCoin)[0];
+      const { name, logo, symbol, urls, date_added, description } = coin;
+      const date = new Date(date_added);
+      const [month, day, year] = [
+        date.getMonth(),
+        date.getDate(),
+        date.getFullYear(),
+      ];
+      const desc = description.substr(0, 200);
+      setCoinDetails({
+        name,
+        logo,
+        symbol,
+        urls,
+        month,
+        day,
+        year,
+        desc,
+      });
+    }
+  }, [searchedCoin]);
+
   const navigateToKnowMore = (url: string) => {
     chrome.tabs.create({ url, active: false });
   };
-
-  const coin: any = Object.values(searchedCoin)[0];
-  const { name, logo, symbol, urls, date_added, description } = coin;
-  const date = new Date(date_added);
-  const [month, day, year] = [
-    date.getMonth(),
-    date.getDate(),
-    date.getFullYear(),
-  ];
-  const coindesc = description.substr(0, 200);
 
   return (
     <div className={classes.searchResultContainer}>
@@ -124,23 +149,27 @@ export const Search: React.FC<Props> = (props) => {
       </div>
       <article className={classes.searchBox}>
         <div className={classes.imageBox}>
-          <img src={logo} alt="coin-preview" className={classes.image} />
+          <img
+            src={coinDetails.logo}
+            alt="coin-preview"
+            className={classes.image}
+          />
         </div>
         <div className={classes.coin}>
           <h3 className={classes.name}>
-            {name}
-            <span className={classes.symbol}>({symbol})</span>
+            {coinDetails.name}
+            <span className={classes.symbol}>({coinDetails.symbol})</span>
           </h3>
           <span className={classes.year}>
             In circulation since{' '}
             <span style={{ fontWeight: 'bold' }}>
-              {day}/{month}/{year}
+              {coinDetails.day}/{coinDetails.month}/{coinDetails.year}
             </span>
             .
           </span>
-          <p className={classes.description}>{coindesc}...</p>
+          <p className={classes.description}>{coinDetails.desc}...</p>
           <StyledButton
-            onClick={() => navigateToKnowMore(urls.website[0])}
+            onClick={() => navigateToKnowMore(coinDetails.urls.website[0])}
             endIcon={<ArrowRightAlt />}
           >
             Know More

@@ -5,8 +5,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Follow from '../../components/Following/Follow';
 import Unfollow from '../../components/Following/Unfollow';
 
-export interface Props {}
-
 const useStyles = makeStyles((theme) => ({
   followingContainer: {
     display: 'flex',
@@ -18,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const Following: React.FC<Props> = (props) => {
+export const Following: React.FC<{}> = (props) => {
   const classes = useStyles();
   const followingCoins = useSelector((state: any) => state.home.followingCoins);
 

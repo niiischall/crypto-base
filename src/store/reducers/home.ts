@@ -1,6 +1,6 @@
 import * as types from '../actions/actionTypes';
 
-const initialState = {
+export const initialState = {
   popularCoins: [],
   popularCoinsDetails: null,
   followingCoins: [],

@@ -1,14 +1,40 @@
-import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { mount } from 'enzyme';
+import { store } from '../../mocks/mock';
+import * as ReactReduxHooks from '../../services/react-redux-hooks';
 
-import { Unfollow } from '../Following/Unfollow';
+import Unfollow from '../Following/Unfollow';
 
-const props = {};
+const setup = () => {
+  const component = mount(
+    <Provider store={store}>
+      <Unfollow />
+    </Provider>,
+  );
+  return {
+    component,
+  };
+};
 
 describe('Unfollow Component', () => {
-  const div = document.createElement('div');
+  let enzymeWrapper: any;
+  const { component } = setup();
+
+  beforeEach(() => {
+    /* mocking useSelector on our mock store */
+    jest
+      .spyOn(ReactReduxHooks, 'useSelector')
+      .mockImplementation((state) => store.getState());
+    /* mocking useDispatch on our mock store  */
+    jest
+      .spyOn(ReactReduxHooks, 'useDispatch')
+      .mockImplementation(() => store.dispatch);
+
+    /* shallow rendering */
+    enzymeWrapper = component;
+  });
 
   it('should match snapshot', () => {
-    const component = ReactDOM.render(<Unfollow {...props} />, div);
-    expect(component).toMatchSnapshot();
+    expect(enzymeWrapper).toMatchSnapshot();
   });
 });

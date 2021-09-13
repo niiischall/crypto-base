@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "60c3f066fe2df9527e81";
+/******/ 	var hotCurrentHash = "1400d1653aec5b7f2159";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -38566,10 +38566,14 @@ function __spreadArrays() {
 
   return r;
 }
-function __spreadArray(to, from) {
-  for (var i = 0, il = from.length, j = to.length; i < il; i++, j++) to[j] = from[i];
-
-  return to;
+function __spreadArray(to, from, pack) {
+  if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+    if (ar || !(i in from)) {
+      if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+      ar[i] = from[i];
+    }
+  }
+  return to.concat(ar || Array.prototype.slice.call(from));
 }
 function __await(v) {
   return this instanceof __await ? (this.v = v, this) : new __await(v);
@@ -38693,20 +38697,16 @@ function __importDefault(mod) {
     default: mod
   };
 }
-function __classPrivateFieldGet(receiver, privateMap) {
-  if (!privateMap.has(receiver)) {
-    throw new TypeError("attempted to get private field on non-instance");
-  }
-
-  return privateMap.get(receiver);
+function __classPrivateFieldGet(receiver, state, kind, f) {
+  if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+  if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+  return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 }
-function __classPrivateFieldSet(receiver, privateMap, value) {
-  if (!privateMap.has(receiver)) {
-    throw new TypeError("attempted to set private field on non-instance");
-  }
-
-  privateMap.set(receiver, value);
-  return value;
+function __classPrivateFieldSet(receiver, state, value, kind, f) {
+  if (kind === "m") throw new TypeError("Private method is not writable");
+  if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
+  if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
+  return kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value), value;
 }
 
 /***/ }),
@@ -40953,7 +40953,7 @@ const notificationInBackground = async () => {
         chrome.notifications.create(notificationID, {
           type: 'basic',
           iconUrl: 'img/icon-128.png',
-          title: 'CryptoBase Notification',
+          title: 'CryptoBase Market Watch',
           message: notificationMessage,
           priority: 2
         });
