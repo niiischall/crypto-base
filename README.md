@@ -1,15 +1,25 @@
 # CryptoBase - A chrome extension for everything crypto.
-As we know cryptocurrency market changes every passing second. This extension will give you the latest price of all the coins, be it the popular ones or the newcomers in the circuit.
 
-What's more? You can set up notifications in your browser and it will remind you every minute with the market watch of your chosen coins.
+### Get to know about the extension, on its offical [website](https://crypto-base-landing-page.vercel.app).
 
-# Demo
-<img width="200" alt="Screenshot-1" src="https://user-images.githubusercontent.com/45312239/133331405-efecb5c6-a562-4430-885f-add3f8b5d5d1.png">
-<img width="200" alt="Screenshot-2" src="https://user-images.githubusercontent.com/45312239/133331584-5f133284-ec74-4cc3-96f9-bc7812d9b49c.png">
-<img width="200" alt="Screenshot 2021-09-15 at 2 20 55 AM" src="https://user-images.githubusercontent.com/45312239/133331978-6f712a66-5e0c-4d4e-ab50-130e0bc79e9d.png">
+## Introduction
+CryptoBase is a chrome extension built for getting all the needs of crypto-trading fulfilled, by just a single-click. No need to visit other websites to keep a watch on the market.
+
+## Features
+* You can set up notifications directly and we'll remind you every minute with the price of your cryptos.
+* See the latest price of popular cryptos in our homepage. It updates itself every minute to get you the latest price.
+* Follow any cryptos. We keep them saved and show them separately.
+* Check out the trending new coins in our trending page. Great early bets can be made there!
+* Search for any coins in our dedicated search for cryptos.
+
+
+## Market Watch
+Our 'Market Watch' feature sets up notification for any crypto of your choice and fires it every minute with its latest price.
+
+![screen-video](https://user-images.githubusercontent.com/45312239/133844536-705a215c-98bc-45c4-9247-064aa1d86591.gif)
 
 # Steps to Install
-As of 15th of September '21, I am in the review process of the chrome web store to launch this extension on their platform offically. Meanwhile, you can follow the below procedure to get this up and running on your browser. It's completely safe to do so.
+As of 18th of September '21, I am in the review process of the chrome web store to launch this extension on their platform offically. Meanwhile, you can follow the below procedure to get this up and running on your browser. It's completely safe to do so.
 
 1. Clone the repo (https://github.com/nischalNikit/crypto-base):
 
