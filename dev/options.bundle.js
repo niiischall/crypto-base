@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "961321278878f69a02f1";
+/******/ 	var hotCurrentHash = "12a63d03118116c40f81";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -42452,7 +42452,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-dev-runtime */ "./node_modules/react/jsx-dev-runtime.js");
 /* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_2__);
-var _jsxFileName = "/Users/geekyants/Desktop/crypto-base/crypto-base/src/options/index.js";
+var _jsxFileName = "/Users/geekyants/Desktop/crypto-base/src/options/index.js";
 
 
 
@@ -42479,9 +42479,9 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/Object(rea
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/geekyants/Desktop/crypto-base/crypto-base/node_modules/webpack/hot/dev-server.js */"./node_modules/webpack/hot/dev-server.js");
-__webpack_require__(/*! /Users/geekyants/Desktop/crypto-base/crypto-base/node_modules/webpack-dev-server/client/index.js?http://localhost:4000 */"./node_modules/webpack-dev-server/client/index.js?http://localhost:4000");
-module.exports = __webpack_require__(/*! /Users/geekyants/Desktop/crypto-base/crypto-base/src/options/index.js */"./src/options/index.js");
+__webpack_require__(/*! /Users/geekyants/Desktop/crypto-base/node_modules/webpack/hot/dev-server.js */"./node_modules/webpack/hot/dev-server.js");
+__webpack_require__(/*! /Users/geekyants/Desktop/crypto-base/node_modules/webpack-dev-server/client/index.js?http://localhost:4000 */"./node_modules/webpack-dev-server/client/index.js?http://localhost:4000");
+module.exports = __webpack_require__(/*! /Users/geekyants/Desktop/crypto-base/src/options/index.js */"./src/options/index.js");
 
 
 /***/ })

@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "961321278878f69a02f1";
+/******/ 	var hotCurrentHash = "12a63d03118116c40f81";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -40941,7 +40941,7 @@ const notificationInBackground = async () => {
   await getNotificationMessage(); //Setting up alarm for notification.
 
   chrome.alarms.create('NOTIFICATION_ALARM', {
-    periodInMinutes: 1
+    periodInMinutes: 0.5
   }); //Firing notification upon that alarm.
 
   chrome.alarms.onAlarm.addListener(async alarm => {
@@ -41140,9 +41140,9 @@ function normalizeNotificationMessage(latestQuotes) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/geekyants/Desktop/crypto-base/crypto-base/node_modules/webpack/hot/dev-server.js */"./node_modules/webpack/hot/dev-server.js");
-__webpack_require__(/*! /Users/geekyants/Desktop/crypto-base/crypto-base/node_modules/webpack-dev-server/client/index.js?http://localhost:4000 */"./node_modules/webpack-dev-server/client/index.js?http://localhost:4000");
-module.exports = __webpack_require__(/*! /Users/geekyants/Desktop/crypto-base/crypto-base/src/background/index.ts */"./src/background/index.ts");
+__webpack_require__(/*! /Users/geekyants/Desktop/crypto-base/node_modules/webpack/hot/dev-server.js */"./node_modules/webpack/hot/dev-server.js");
+__webpack_require__(/*! /Users/geekyants/Desktop/crypto-base/node_modules/webpack-dev-server/client/index.js?http://localhost:4000 */"./node_modules/webpack-dev-server/client/index.js?http://localhost:4000");
+module.exports = __webpack_require__(/*! /Users/geekyants/Desktop/crypto-base/src/background/index.ts */"./src/background/index.ts");
 
 
 /***/ })
