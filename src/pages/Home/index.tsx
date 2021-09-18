@@ -125,7 +125,10 @@ export const Home: React.FC<{}> = (props) => {
   }, [dispatch, popularCoins, popularCoinsDetails]);
 
   const navigateToLearnMore = () => {
-    chrome.tabs.create({ url: 'http://www.google.com', active: true });
+    chrome.tabs.create({
+      url: 'https://crypto-base-landing-page.vercel.app',
+      active: true,
+    });
   };
 
   const handleChange = (event: any, newValue: number) => {

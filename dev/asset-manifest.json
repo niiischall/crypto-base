@@ -7,7 +7,9 @@
     "contentScript.js": "contentScript.bundle.js",
     "contentScript.js.map": "contentScript.bundle.js.map",
     "options.js": "options.bundle.js",
-    "options.js.map": "options.bundle.js.map"
+    "options.js.map": "options.bundle.js.map",
+    "options.html": "options.html",
+    "popup.html": "popup.html"
   },
   "entrypoints": [
     "app.bundle.js",
