@@ -48,6 +48,7 @@ const notificationInBackground = async () => {
   await getNotificationMessage();
   //Setting up alarm for notification.
   chrome.alarms.create('NOTIFICATION_ALARM', {
+    when: Date.now(),
     periodInMinutes: 1,
   });
 

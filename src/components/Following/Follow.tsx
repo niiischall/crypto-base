@@ -10,7 +10,9 @@ import {
 } from '../../store/actions/actionHome';
 import { normalizePrice, isCoinPresent } from '../../services/helpers';
 
-export interface Props {}
+export interface Props {
+  openDialog: Function;
+}
 
 const useStyles = makeStyles((theme) => ({
   followContainer: {
@@ -77,7 +79,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const Follow: React.FC<Props> = (props) => {
+export const Follow: React.FC<Props> = ({ openDialog }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
@@ -96,6 +98,7 @@ export const Follow: React.FC<Props> = (props) => {
     } else {
       dispatch(startNotifications(coin));
     }
+    openDialog();
   };
 
   const renderPriceChange = (change: any) => {

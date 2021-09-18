@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "12a63d03118116c40f81";
+/******/ 	var hotCurrentHash = "13755a4f206bb2f6d111";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -40941,7 +40941,8 @@ const notificationInBackground = async () => {
   await getNotificationMessage(); //Setting up alarm for notification.
 
   chrome.alarms.create('NOTIFICATION_ALARM', {
-    periodInMinutes: 0.5
+    when: Date.now(),
+    periodInMinutes: 1
   }); //Firing notification upon that alarm.
 
   chrome.alarms.onAlarm.addListener(async alarm => {

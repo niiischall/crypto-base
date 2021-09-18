@@ -13,6 +13,7 @@
     "app.bundle.js",
     "options.bundle.js",
     "background.bundle.js",
+    "background.30350b7c466b23c3a23b.hot-update.js",
     "contentScript.bundle.js"
   ]
 }

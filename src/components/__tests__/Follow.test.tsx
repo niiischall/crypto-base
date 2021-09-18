@@ -5,10 +5,14 @@ import * as ReactReduxHooks from '../../services/react-redux-hooks';
 
 import Follow from '../Following/Follow';
 
+const props = {
+  openDialog: jest.fn(),
+};
+
 const setup = () => {
   const component = mount(
     <Provider store={store}>
-      <Follow />
+      <Follow {...props} />
     </Provider>,
   );
   return {
