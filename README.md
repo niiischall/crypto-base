@@ -19,7 +19,7 @@ Our 'Market Watch' feature sets up notification for any crypto of your choice an
 ![screen-video](https://user-images.githubusercontent.com/45312239/133844536-705a215c-98bc-45c4-9247-064aa1d86591.gif)
 
 # Steps to Install
-As of 18th of September '21, I am in the review process of the chrome web store to launch this extension on their platform offically. Meanwhile, you can follow the below procedure to get this up and running on your browser. It's completely safe to do so.
+It's live on chrome web store! You can check it out [here](https://chrome.google.com/webstore/detail/cryptobase/ikfflekndepjnkfemndojilpkipdonfi).
 
 1. Clone the repo (https://github.com/nischalNikit/crypto-base):
 
